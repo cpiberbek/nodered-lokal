@@ -16,6 +16,22 @@
         "env": []
     },
     {
+        "id": "7c8827d758da3caf",
+        "type": "tab",
+        "label": "Machine - Chamber",
+        "disabled": true,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "8e39c945bd692398",
+        "type": "tab",
+        "label": "Chamber Dupe",
+        "disabled": true,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "8d0798d68fe40ce6",
         "type": "tab",
         "label": "DB_Initialisation",
@@ -71,41 +87,20 @@
         "charset": "UTF8"
     },
     {
-        "id": "7eb6ea8639746bc1",
-        "type": "mqtt-broker",
-        "name": "Bandung Dev",
-        "broker": "10.26.9.34",
-        "port": 1883,
-        "clientid": "",
-        "autoConnect": true,
-        "usetls": false,
-        "protocolVersion": 4,
-        "keepalive": 60,
-        "cleansession": true,
-        "autoUnsubscribe": true,
-        "birthTopic": "",
-        "birthQos": "0",
-        "birthRetain": "false",
-        "birthPayload": "",
-        "birthMsg": {},
-        "closeTopic": "",
-        "closeQos": "0",
-        "closeRetain": "false",
-        "closePayload": "",
-        "closeMsg": {},
-        "willTopic": "",
-        "willQos": "0",
-        "willRetain": "false",
-        "willPayload": "",
-        "willMsg": {},
-        "userProps": "",
-        "sessionExpiry": ""
+        "id": "dec916b40ded4a6c",
+        "type": "MySQLdatabase",
+        "name": "db_plant",
+        "host": "10.26.9.34",
+        "port": "3306",
+        "db": "iot_slt_test",
+        "tz": "",
+        "charset": "UTF8"
     },
     {
-        "id": "265ec8bf893c99b9",
+        "id": "3dd935c7f9f57cbe",
         "type": "mqtt-broker",
-        "name": "MQTT Salatiga",
-        "broker": "10.71.3.27",
+        "name": "cikande",
+        "broker": "10.7.10.112",
         "port": "1884",
         "clientid": "",
         "autoConnect": true,
@@ -131,16 +126,6 @@
         "willMsg": {},
         "userProps": "",
         "sessionExpiry": ""
-    },
-    {
-        "id": "dec916b40ded4a6c",
-        "type": "MySQLdatabase",
-        "name": "db_plant",
-        "host": "10.26.9.34",
-        "port": "3306",
-        "db": "iot_slt_test",
-        "tz": "",
-        "charset": "UTF8"
     },
     {
         "id": "f775e65ba0493565",
@@ -665,28 +650,6 @@
         ]
     },
     {
-        "id": "b35cf6658cf55018",
-        "type": "mqtt in",
-        "z": "a850bca680aa7206",
-        "name": "MQTT",
-        "topic": "data/SLT/#",
-        "qos": "2",
-        "datatype": "auto",
-        "broker": "265ec8bf893c99b9",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "inputs": 0,
-        "x": 370,
-        "y": 440,
-        "wires": [
-            [
-                "f775e65ba0493565",
-                "3bc88b03e30af0be"
-            ]
-        ]
-    },
-    {
         "id": "baada4a4e38555b6",
         "type": "comment",
         "z": "a850bca680aa7206",
@@ -898,7 +861,7 @@
         "type": "function",
         "z": "a850bca680aa7206",
         "name": "Versi di Nodered Dev 141",
-        "func": "/**********************************************************************\n * PROJECT VERSION\n *\n * HANYA DIUBAH PADA NODE-RED DEVELOPMENT.\n *\n * Ubah VERSION setiap selesai release sebelum Commit & Push.\n *\n * Production TIDAK PERLU mengubah node ini.\n **********************************************************************/\n\nconst VERSION = \"1.13.1\";\n\nmsg.version = VERSION;\n\nreturn msg;",
+        "func": "/**********************************************************************\n * PROJECT VERSION\n *\n * HANYA DIUBAH PADA NODE-RED DEVELOPMENT.\n *\n * Ubah VERSION setiap selesai release sebelum Commit & Push.\n *\n * Production TIDAK PERLU mengubah node ini.\n **********************************************************************/\n\nconst VERSION = \"1.13.2\";\n\nmsg.version = VERSION;\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -948,7 +911,7 @@
         "type": "function",
         "z": "a850bca680aa7206",
         "name": "📌 [Edit] Link di Nodered Live Tiap Plant",
-        "func": "/**********************************************************************\n * NODE-RED LINK\n *\n * HANYA DIUBAH PADA SERVER PRODUCTION.\n *\n * Isi sesuai URL Node-RED lokal.\n *\n * Development tidak perlu mengubah node ini.\n **********************************************************************/\n\nconst LINK = \"http://10.26.9.34:1880/\";\n\nmsg.link = LINK;\n\nreturn msg;",
+        "func": "/**********************************************************************\n * NODE-RED LINK\n *\n * HANYA DIUBAH PADA SERVER PRODUCTION.\n *\n * Isi sesuai URL Node-RED lokal.\n *\n * Development tidak perlu mengubah node ini.\n **********************************************************************/\n\nconst LINK = \"http://10.7.10.112:1880/\";\n\nmsg.link = LINK;\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -1326,7 +1289,9 @@
         "name": "Kirim ke Flow CCP",
         "mode": "link",
         "links": [
-            "beda61830a8cd423"
+            "beda61830a8cd423",
+            "201ec202fe562130",
+            "9a176f3e297a9c60"
         ],
         "x": 1165,
         "y": 820,
@@ -1400,8 +1365,8 @@
         "type": "mysql",
         "z": "a850bca680aa7206",
         "mydb": "dec916b40ded4a6c",
-        "name": "MySQL sensor_cycle",
-        "x": 1160,
+        "name": "database",
+        "x": 1120,
         "y": 1580,
         "wires": [
             [
@@ -1530,6 +1495,28 @@
         "x": 1000,
         "y": 820,
         "wires": []
+    },
+    {
+        "id": "b35cf6658cf55018",
+        "type": "mqtt in",
+        "z": "a850bca680aa7206",
+        "name": "MQTT",
+        "topic": "data/01/#",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "3dd935c7f9f57cbe",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 370,
+        "y": 440,
+        "wires": [
+            [
+                "f775e65ba0493565",
+                "3bc88b03e30af0be"
+            ]
+        ]
     },
     {
         "id": "beda61830a8cd423",
@@ -1754,6 +1741,625 @@
         ]
     },
     {
+        "id": "201ec202fe562130",
+        "type": "link in",
+        "z": "7c8827d758da3caf",
+        "name": "Terima Data Chamber",
+        "links": [
+            "685feb394790ccaf"
+        ],
+        "x": 155,
+        "y": 340,
+        "wires": [
+            [
+                "431d687986fd4aef"
+            ]
+        ]
+    },
+    {
+        "id": "431d687986fd4aef",
+        "type": "function",
+        "z": "7c8827d758da3caf",
+        "name": "Normalize Data Chamber",
+        "func": "/*\n * Normalize input Chamber\n *\n * Mendukung beberapa format:\n * msg.payload.value\n * msg.value\n * msg.payload\n * msg.payload.timestamp\n * msg.timestamp\n *\n * Project code dapat berasal dari:\n * msg.project_code\n * msg.ccp.uuid\n */\n\nlet value = msg.payload?.value ?? msg.value ?? msg.payload;\nlet timestamp = msg.payload?.timestamp ?? msg.timestamp ?? new Date();\n\nlet temperature = Number(value);\n\nif (!Number.isFinite(temperature)) {\n    node.warn(\"Temperature Chamber tidak valid: \" + value);\n    return null;\n}\n\nlet projectCode =\n    msg.project_code ||\n    msg.ccp?.uuid ||\n    \"07b16345-ee23-4555-bcf9-f53dc2bfc3f8\";\n\nlet sensorCode =\n    msg.sensor_code ||\n    msg.payload?.sensor_code ||\n    \"CHAMBER1\";\n\nmsg.chamber = {\n    project_code: projectCode,\n    sensor_code: sensorCode,\n    temperature: temperature,\n    timestamp: timestamp\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 355,
+        "y": 340,
+        "wires": [
+            [
+                "810f30fc1652aca6"
+            ]
+        ]
+    },
+    {
+        "id": "810f30fc1652aca6",
+        "type": "function",
+        "z": "7c8827d758da3caf",
+        "name": "Logic Chamber V2 - Sterilization",
+        "func": "/*\n * ======================================================\n * CHAMBER PROCESS ANALYZER V2\n * Sterilization sebagai proses utama\n * ======================================================\n *\n * STATE:\n * IDLE\n * HEATING\n * STERILIZATION\n * COOLING\n * FINISH\n * FAILED\n *\n * ======================================================\n * RULES\n * ======================================================\n *\n * START CYCLE       : T >= 35 C setelah IDLE\n * ENTER STERI       : T >= 117 C\n * STERI VALID       : 117 C <= T <= 121 C\n * HOLD REQUIRED     : 16 menit\n * STERI TIMEOUT     : 25 menit\n * COOLING COMPLETE  : T <= 35 C selama 5 menit\n *\n * Catatan:\n * dT/dt hanya digunakan sebagai informasi diagnostik.\n * Tidak digunakan sebagai failure hanya karena satu titik\n * temperature mengalami penurunan.\n */\n\nconst c = msg.chamber;\n\nif (!c) {\n    node.error(\"msg.chamber tidak ditemukan\");\n    return null;\n}\n\nconst PROJECT_CODE = c.project_code;\nconst SENSOR_CODE = c.sensor_code;\nconst temperature = Number(c.temperature);\n\nlet timestamp = new Date(c.timestamp);\n\nif (isNaN(timestamp.getTime())) {\n    timestamp = new Date();\n}\n\n// ======================================================\n// CONFIGURATION\n// ======================================================\n\nconst START_TEMP = 35;\n\nconst STERI_MIN = 117;\nconst STERI_MAX = 121;\n\nconst STERI_HOLD_SEC = 16 * 60;\nconst STERI_TIMEOUT_SEC = 25 * 60;\n\nconst HEATING_TIMEOUT_SEC = 25 * 60;\n\nconst COOLING_COMPLETE_TEMP = 35;\nconst COOLING_STABLE_SEC = 5 * 60;\n\n// ======================================================\n// DATE / TIME\n// ======================================================\n\nfunction pad(n) {\n    return String(n).padStart(2, \"0\");\n}\n\nconst productionDate =\n    timestamp.getFullYear() + \"-\" +\n    pad(timestamp.getMonth() + 1) + \"-\" +\n    pad(timestamp.getDate());\n\nconst timeOnly =\n    pad(timestamp.getHours()) + \":\" +\n    pad(timestamp.getMinutes()) + \":\" +\n    pad(timestamp.getSeconds());\n\n// ======================================================\n// CONTEXT KEY\n// ======================================================\n\nconst contextKey =\n    \"chamber_state_\" +\n    PROJECT_CODE + \"_\" +\n    SENSOR_CODE;\n\nlet state = flow.get(contextKey);\n\nif (!state) {\n    state = {\n        state: \"IDLE\",\n        cycle: null,\n        production_date: null,\n        cycle_start: null,\n        cycle_end: null,\n        heating_start: null,\n        sterilization_start: null,\n        cooling_start: null,\n        last_timestamp: null,\n        last_temperature: null,\n        valid_holding_sec: 0,\n        sterilization_duration_sec: 0,\n        heating_duration_sec: 0,\n        cooling_duration_sec: 0,\n        cooling_below_since: null,\n        warning_code: null,\n        warning: null,\n        last_rate: 0\n    };\n}\n\n// ======================================================\n// HELPER\n// ======================================================\n\nfunction durationSec(start, end) {\n    if (!start) return 0;\n\n    return Math.max(\n        0,\n        (new Date(end).getTime() - new Date(start).getTime()) / 1000\n    );\n}\n\nfunction setWarning(code, message) {\n    state.warning_code = code;\n    state.warning = message;\n}\n\nfunction clearWarning() {\n    state.warning_code = null;\n    state.warning = null;\n}\n\nfunction sqlEscape(value) {\n    if (value === null || value === undefined) {\n        return \"NULL\";\n    }\n\n    return \"'\" + String(value)\n        .replace(/\\\\/g, \"\\\\\\\\\")\n        .replace(/'/g, \"''\") + \"'\";\n}\n\n// ======================================================\n// DAILY RESET\n// ======================================================\n\nif (\n    state.production_date &&\n    state.production_date !== productionDate &&\n    state.state === \"IDLE\"\n) {\n    state.cycle = null;\n    state.production_date = productionDate;\n}\n\n// ======================================================\n// dT/dt\n// ======================================================\n\nlet rate = 0;\n\nif (state.last_timestamp && state.last_temperature !== null) {\n\n    const currentMs = timestamp.getTime();\n    const previousMs = new Date(state.last_timestamp).getTime();\n\n    const deltaSec = (currentMs - previousMs) / 1000;\n\n    if (deltaSec > 0) {\n        rate =\n            ((temperature - state.last_temperature) / deltaSec) * 60;\n    }\n}\n\nstate.last_rate = rate;\n\n// ======================================================\n// STATE MACHINE\n// ======================================================\n\nswitch (state.state) {\n\n    // ==================================================\n    // IDLE\n    // ==================================================\n\n    case \"IDLE\": {\n\n        /*\n         * Cycle baru dimulai ketika temperature\n         * keluar dari kondisi ambient.\n         *\n         * Tidak menggunakan dT/dt sebagai syarat wajib.\n         */\n\n        if (temperature >= START_TEMP) {\n\n            // Reset cycle jika production date berubah\n            if (state.production_date !== productionDate) {\n                state.cycle = null;\n            }\n\n            state.cycle = (Number(state.cycle) || 0) + 1;\n            state.production_date = productionDate;\n\n            state.cycle_start = timestamp.toISOString();\n            state.cycle_end = null;\n\n            state.heating_start = timestamp.toISOString();\n            state.sterilization_start = null;\n            state.cooling_start = null;\n\n            state.valid_holding_sec = 0;\n            state.sterilization_duration_sec = 0;\n            state.heating_duration_sec = 0;\n            state.cooling_duration_sec = 0;\n            state.cooling_below_since = null;\n\n            clearWarning();\n\n            state.state = \"HEATING\";\n\n            node.status({\n                fill: \"blue\",\n                shape: \"dot\",\n                text: \"Cycle \" + state.cycle + \" - HEATING\"\n            });\n        }\n\n        break;\n    }\n\n    // ==================================================\n    // HEATING\n    // ==================================================\n\n    case \"HEATING\": {\n\n        state.heating_duration_sec = durationSec(\n            state.heating_start,\n            timestamp\n        );\n\n        /*\n         * Sterilization dianggap dimulai ketika\n         * temperature pertama kali masuk >=117 C.\n         */\n\n        if (temperature >= STERI_MIN) {\n\n            state.state = \"STERILIZATION\";\n            state.sterilization_start = timestamp.toISOString();\n            state.valid_holding_sec = 0;\n\n            clearWarning();\n\n            node.status({\n                fill: \"green\",\n                shape: \"dot\",\n                text: \"Cycle \" + state.cycle + \" - STERILIZATION\"\n            });\n        }\n\n        /*\n         * Heating timeout.\n         */\n        else if (state.heating_duration_sec >= HEATING_TIMEOUT_SEC) {\n\n            setWarning(\n                \"HEATING_TIMEOUT\",\n                \"Temperature belum mencapai 117 C dalam 25 menit\"\n            );\n\n            state.state = \"FAILED\";\n\n            node.status({\n                fill: \"red\",\n                shape: \"dot\",\n                text: \"Cycle \" + state.cycle + \" - FAILED\"\n            });\n        }\n\n        break;\n    }\n\n    // ==================================================\n    // STERILIZATION\n    // ==================================================\n\n    case \"STERILIZATION\": {\n\n        state.sterilization_duration_sec = durationSec(\n            state.sterilization_start,\n            timestamp\n        );\n\n        // ----------------------------------------------\n        // TEMPERATURE VALID\n        // ----------------------------------------------\n\n        if (\n            temperature >= STERI_MIN &&\n            temperature <= STERI_MAX\n        ) {\n\n            /*\n             * Tambahkan interval hanya jika sample\n             * sebelumnya juga berada di range valid.\n             *\n             * Ini mencegah lonjakan waktu holding\n             * saat ada gap data.\n             */\n\n            if (\n                state.last_timestamp &&\n                state.last_temperature !== null &&\n                state.last_temperature >= STERI_MIN &&\n                state.last_temperature <= STERI_MAX\n            ) {\n\n                const deltaSec =\n                    (timestamp.getTime() -\n                    new Date(state.last_timestamp).getTime()) / 1000;\n\n                // Hindari gap besar dihitung sebagai holding\n                if (deltaSec > 0 && deltaSec <= 120) {\n                    state.valid_holding_sec += deltaSec;\n                }\n            }\n\n            clearWarning();\n        }\n\n        // ----------------------------------------------\n        // TEMPERATURE LOW\n        // ----------------------------------------------\n\n        else if (temperature < STERI_MIN) {\n\n            setWarning(\n                \"STERI_TEMP_LOW\",\n                \"Temperature sterilization di bawah 117 C\"\n            );\n\n            /*\n             * HOLDING PAUSE.\n             * Tidak reset ke 0.\n             */\n        }\n\n        // ----------------------------------------------\n        // TEMPERATURE HIGH\n        // ----------------------------------------------\n\n        else if (temperature > STERI_MAX) {\n\n            setWarning(\n                \"STERI_TEMP_HIGH\",\n                \"Temperature sterilization di atas 121 C\"\n            );\n        }\n\n        // ----------------------------------------------\n        // HOLDING COMPLETE\n        // ----------------------------------------------\n\n        if (state.valid_holding_sec >= STERI_HOLD_SEC) {\n\n            state.state = \"COOLING\";\n            state.cooling_start = timestamp.toISOString();\n            state.cooling_below_since = null;\n\n            clearWarning();\n\n            node.status({\n                fill: \"green\",\n                shape: \"dot\",\n                text: \"Cycle \" + state.cycle + \" - COOLING\"\n            });\n        }\n\n        // ----------------------------------------------\n        // STERILIZATION TIMEOUT\n        // ----------------------------------------------\n\n        else if (\n            state.sterilization_duration_sec >=\n            STERI_TIMEOUT_SEC\n        ) {\n\n            setWarning(\n                \"STERI_HOLD_TIMEOUT\",\n                \"Holding valid belum mencapai 16 menit dalam 25 menit\"\n            );\n\n            state.state = \"FAILED\";\n\n            node.status({\n                fill: \"red\",\n                shape: \"dot\",\n                text: \"Cycle \" + state.cycle + \" - FAILED\"\n            });\n        }\n\n        break;\n    }\n\n    // ==================================================\n    // COOLING\n    // ==================================================\n\n    case \"COOLING\": {\n\n        state.cooling_duration_sec = durationSec(\n            state.cooling_start,\n            timestamp\n        );\n\n        /*\n         * Jangan langsung selesai hanya karena satu\n         * sample <35 C.\n         */\n\n        if (temperature <= COOLING_COMPLETE_TEMP) {\n\n            if (!state.cooling_below_since) {\n                state.cooling_below_since = timestamp.toISOString();\n            }\n\n            const stableDuration = durationSec(\n                state.cooling_below_since,\n                timestamp\n            );\n\n            if (stableDuration >= COOLING_STABLE_SEC) {\n\n                state.state = \"FINISH\";\n                state.cycle_end = timestamp.toISOString();\n\n                clearWarning();\n\n                node.status({\n                    fill: \"green\",\n                    shape: \"dot\",\n                    text: \"Cycle \" + state.cycle + \" - FINISH\"\n                });\n            }\n        }\n        else {\n            // Temperature kembali naik, timer stabil di-reset.\n            state.cooling_below_since = null;\n        }\n\n        break;\n    }\n\n    // ==================================================\n    // FINISH\n    // ==================================================\n\n    case \"FINISH\": {\n\n        /*\n         * Cycle sudah selesai.\n         * Tetap FINISH sampai sample berikutnya,\n         * kemudian kembali IDLE.\n         */\n\n        state.state = \"IDLE\";\n\n        node.status({\n            fill: \"grey\",\n            shape: \"ring\",\n            text: \"Cycle \" + state.cycle + \" selesai\"\n        });\n\n        break;\n    }\n\n    // ==================================================\n    // FAILED\n    // ==================================================\n\n    case \"FAILED\": {\n\n        /*\n         * Cycle gagal tetap dipertahankan sampai\n         * chamber kembali ke kondisi rendah.\n         *\n         * Setelah <=35 C, cycle ditutup.\n         */\n\n        if (temperature <= COOLING_COMPLETE_TEMP) {\n\n            if (!state.cooling_below_since) {\n                state.cooling_below_since = timestamp.toISOString();\n            }\n\n            const stableDuration = durationSec(\n                state.cooling_below_since,\n                timestamp\n            );\n\n            if (stableDuration >= COOLING_STABLE_SEC) {\n\n                state.cycle_end = timestamp.toISOString();\n                state.state = \"FINISH\";\n\n                node.status({\n                    fill: \"red\",\n                    shape: \"dot\",\n                    text: \"Cycle \" + state.cycle + \" FAILED\"\n                });\n            }\n        }\n        else {\n            state.cooling_below_since = null;\n        }\n\n        break;\n    }\n}\n\n// ======================================================\n// RESULT STATUS\n// ======================================================\n\nlet status = \"NORMAL\";\n\nif (state.state === \"FAILED\") {\n    status = \"FAILED\";\n}\nelse if (state.warning) {\n    status = \"WARNING\";\n}\n\n// ======================================================\n// DATA RESULT\n// ======================================================\n\nconst resultData = {\n\n    state: state.state,\n    step: state.state,\n\n    temperature: Number(temperature.toFixed(2)),\n    rate_c_per_min: Number(rate.toFixed(3)),\n\n    project_code: PROJECT_CODE,\n    sensor_code: SENSOR_CODE,\n\n    cycle: state.cycle,\n    production_date: productionDate,\n\n    warning: state.warning,\n    warning_code: state.warning_code,\n\n    sterilization: {\n        min_temperature: STERI_MIN,\n        max_temperature: STERI_MAX,\n        required_holding_sec: STERI_HOLD_SEC,\n        required_holding_min: 16,\n        valid_holding_sec: Math.round(state.valid_holding_sec),\n        valid_holding_min: Number((state.valid_holding_sec / 60).toFixed(2)),\n        progress_percent: Number(\n            Math.min(\n                100,\n                state.valid_holding_sec / STERI_HOLD_SEC * 100\n            ).toFixed(1)\n        )\n    },\n\n    duration: {\n        heating_sec: Math.round(state.heating_duration_sec),\n        sterilization_sec: Math.round(state.sterilization_duration_sec),\n        cooling_sec: Math.round(state.cooling_duration_sec)\n    },\n\n    timestamp: timestamp.toISOString()\n};\n\n// ======================================================\n// UPDATE CONTEXT\n// ======================================================\n\nstate.last_timestamp = timestamp.toISOString();\nstate.last_temperature = temperature;\n\nflow.set(contextKey, state);\n\n// ======================================================\n// SQL sensor_machine\n// ======================================================\n\nconst sqlTimestamp =\n    timestamp.getFullYear() + \"-\" +\n    pad(timestamp.getMonth() + 1) + \"-\" +\n    pad(timestamp.getDate()) + \" \" +\n    pad(timestamp.getHours()) + \":\" +\n    pad(timestamp.getMinutes()) + \":\" +\n    pad(timestamp.getSeconds());\n\nconst machineSQL = `\nINSERT INTO sensor_machine\n(\n    project_code,\n    sensor_code,\n    timestamp,\n    cycle,\n    value\n)\nVALUES\n(\n    ${sqlEscape(PROJECT_CODE)},\n    ${sqlEscape(SENSOR_CODE)},\n    ${sqlEscape(sqlTimestamp)},\n    ${sqlEscape(state.cycle)},\n    ${sqlEscape(temperature)}\n);\n`;\n\n// ======================================================\n// SQL sensor_cycle\n// ======================================================\n\nconst cycleStartTime = state.cycle_start\n    ? new Date(state.cycle_start).toTimeString().slice(0, 8)\n    : null;\n\nconst cycleEndTime = state.cycle_end\n    ? new Date(state.cycle_end).toTimeString().slice(0, 8)\n    : null;\n\nconst cycleJSON = JSON.stringify(resultData);\n\nconst cycleSQL = `\nINSERT INTO sensor_cycle\n(\n    project_code,\n    sensor_code,\n    production_date,\n    cycle,\n    start,\n    end,\n    status,\n    data\n)\nVALUES\n(\n    ${sqlEscape(PROJECT_CODE)},\n    ${sqlEscape(SENSOR_CODE)},\n    ${sqlEscape(productionDate)},\n    ${sqlEscape(state.cycle)},\n    ${sqlEscape(cycleStartTime)},\n    ${sqlEscape(cycleEndTime)},\n    ${sqlEscape(status)},\n    ${sqlEscape(cycleJSON)}\n)\nON DUPLICATE KEY UPDATE\n    start = VALUES(start),\n    end = VALUES(end),\n    status = VALUES(status),\n    data = VALUES(data),\n    update_at = CURRENT_TIMESTAMP;\n`;\n\n// ======================================================\n// OUTPUT\n// ======================================================\n\nlet msgMachine = RED.util.cloneMessage(msg);\nmsgMachine.topic = machineSQL;\nmsgMachine.chamber_result = resultData;\n\nlet msgCycle = RED.util.cloneMessage(msg);\nmsgCycle.topic = cycleSQL;\nmsgCycle.chamber_result = resultData;\n\nreturn [msgMachine, msgCycle];",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 635,
+        "y": 340,
+        "wires": [
+            [
+                "54049056dd683dfc"
+            ],
+            [
+                "07beb99d6ceff90e"
+            ]
+        ]
+    },
+    {
+        "id": "54049056dd683dfc",
+        "type": "mysql",
+        "z": "7c8827d758da3caf",
+        "mydb": "dec916b40ded4a6c",
+        "name": "Insert sensor_machine",
+        "x": 945,
+        "y": 320,
+        "wires": [
+            [
+                "ea91c6e84b662c3e"
+            ]
+        ]
+    },
+    {
+        "id": "07beb99d6ceff90e",
+        "type": "mysql",
+        "z": "7c8827d758da3caf",
+        "mydb": "dec916b40ded4a6c",
+        "name": "Insert Update sensor_cycle",
+        "x": 965,
+        "y": 380,
+        "wires": [
+            [
+                "622ba653025dd504"
+            ]
+        ]
+    },
+    {
+        "id": "ea91c6e84b662c3e",
+        "type": "debug",
+        "z": "7c8827d758da3caf",
+        "name": "Debug sensor_machine",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "topic",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1235,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "622ba653025dd504",
+        "type": "debug",
+        "z": "7c8827d758da3caf",
+        "name": "Debug sensor_cycle",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "chamber_result",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1235,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "9a176f3e297a9c60",
+        "type": "link in",
+        "z": "8e39c945bd692398",
+        "name": "Terima Data Chamber",
+        "links": [
+            "685feb394790ccaf"
+        ],
+        "x": 35,
+        "y": 220,
+        "wires": [
+            [
+                "28c1d7afe02a98bf"
+            ]
+        ]
+    },
+    {
+        "id": "28c1d7afe02a98bf",
+        "type": "function",
+        "z": "8e39c945bd692398",
+        "name": "Normalize Data Chamber",
+        "func": "let payload = msg.payload;\n\n// Ambil data mentah\nlet rawTemperature = payload?.data;\n\n// Validasi\nif (rawTemperature === undefined || rawTemperature === null) {\n    node.warn(\"Data temperature tidak ditemukan\");\n    return null;\n}\n\n// Konversi ke angka\nlet temperature = Number(rawTemperature);\n\nif (!Number.isFinite(temperature)) {\n    node.warn(\"Data temperature tidak valid: \" + rawTemperature);\n    return null;\n}\n\n// Konversi ke Celsius\ntemperature = temperature / 10;\n\n// Timestamp\nlet timestamp =\n    payload?._terminalTime ||\n    new Date().toISOString();\n\n// Identitas sensor\nlet sensorCode =\n    payload?._groupName ||\n    \"CHAMBER1\";\n\n// Interval\nlet interval =\n    Number(payload?.Interval) || 5;\n\n\n// Simpan data yang sudah dinormalisasi\nmsg.chamber = {\n    sensor_code: sensorCode,\n    temperature: temperature,\n    raw_temperature: rawTemperature,\n    timestamp: timestamp,\n    interval: interval\n};\n\nreturn msg;",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 235,
+        "y": 220,
+        "wires": [
+            [
+                "29f783ee08637808",
+                "1cd3f73a038853ac"
+            ],
+            [
+                "7156c4c5cd3eb3e7"
+            ]
+        ]
+    },
+    {
+        "id": "1cd3f73a038853ac",
+        "type": "function",
+        "z": "8e39c945bd692398",
+        "name": "Pemanasan Awal",
+        "func": "// ==========================================\n// PEMANASAN AWAL\n// Standar:\n// 50 °C → 110 °C\n// Durasi: 2,5 menit (150 detik)\n// ==========================================\n\nconst chamber = msg.chamber;\n\nif (!chamber) {\n    node.warn(\"Data chamber tidak ditemukan\");\n    return null;\n}\n\nconst sensorCode = chamber.sensor_code;\nconst temperature = Number(chamber.temperature);\nconst timestamp = chamber.timestamp;\n\nif (!sensorCode || !Number.isFinite(temperature)) {\n    node.warn(\"Data chamber tidak valid\");\n    return null;\n}\n\n\n// ==========================================\n// STATE PER CHAMBER\n// ==========================================\n\nlet states = flow.get(\"chamber_states\") || {};\n\nlet state = states[sensorCode];\n\n\n// ==========================================\n// INISIALISASI STATE\n// ==========================================\n\nif (!state) {\n\n    state = {\n        process: \"PEMANASAN_AWAL\",\n        status: \"RUNNING\",\n        start_time: timestamp,\n        last_temperature: temperature,\n        last_timestamp: timestamp\n    };\n\n    states[sensorCode] = state;\n    flow.set(\"chamber_states\", states);\n}\n\n\n// ==========================================\n// CEK CURRENT PROCESS\n// ==========================================\n\n// Jika chamber sudah bukan Pemanasan Awal,\n// jangan proses ulang di Function ini.\n\nif (state.process !== \"PEMANASAN_AWAL\") {\n    return null;\n}\n\n\n// ==========================================\n// HITUNG DURASI\n// ==========================================\n\nconst startTime = new Date(state.start_time);\nconst currentTime = new Date(timestamp);\n\nlet elapsedSeconds =\n    (currentTime.getTime() - startTime.getTime()) / 1000;\n\n\n// Proteksi jika timestamp tidak valid\nif (!Number.isFinite(elapsedSeconds) || elapsedSeconds < 0) {\n    elapsedSeconds = 0;\n}\n\n\n// ==========================================\n// KONDISI PROSES\n// ==========================================\n\n// Target Pemanasan Awal\nconst TARGET_TEMPERATURE = 110;\n\n// Durasi standar\nconst TARGET_DURATION = 150;\n\n\n// ==========================================\n// CEK SELESAI\n// ==========================================\n\nif (temperature >= TARGET_TEMPERATURE) {\n\n    state.process = \"PEMANASAN\";\n    state.status = \"COMPLETE\";\n    state.end_time = timestamp;\n    state.last_temperature = temperature;\n    state.last_timestamp = timestamp;\n\n    states[sensorCode] = state;\n    flow.set(\"chamber_states\", states);\n\n\n    // ======================================\n    // DATA UNTUK MYSQL / DEBUG\n    // ======================================\n\n    msg.chamber_result = {\n        sensor_code: sensorCode,\n        process: \"PEMANASAN_AWAL\",\n        status: \"COMPLETE\",\n        temperature: temperature,\n        start_time: state.start_time,\n        end_time: timestamp,\n        duration_seconds: elapsedSeconds\n    };\n\n\n    // Output 1 → Pemanasan\n    return [msg, null];\n}\n\n\n// ==========================================\n// MASIH BERJALAN\n// ==========================================\n\nstate.status = \"RUNNING\";\nstate.last_temperature = temperature;\nstate.last_timestamp = timestamp;\n\nstates[sensorCode] = state;\nflow.set(\"chamber_states\", states);\n\n\n// ==========================================\n// DATA STATUS UNTUK MYSQL / DEBUG\n// ==========================================\n\nmsg.chamber_result = {\n    sensor_code: sensorCode,\n    process: \"PEMANASAN_AWAL\",\n    status: \"RUNNING\",\n    temperature: temperature,\n    start_time: state.start_time,\n    elapsed_seconds: elapsedSeconds\n};\n\n\n// Output 2 → MySQL cycle\nreturn [null, msg];",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 490,
+        "y": 220,
+        "wires": [
+            [
+                "4fa5ac161dfceac8"
+            ],
+            [
+                "ac245832facb4940"
+            ]
+        ]
+    },
+    {
+        "id": "ef4e1bf171ec364c",
+        "type": "debug",
+        "z": "8e39c945bd692398",
+        "name": "Debug sensor",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "topic",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 720,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "4fa5ac161dfceac8",
+        "type": "function",
+        "z": "8e39c945bd692398",
+        "name": "Pemanasan",
+        "func": "\nreturn msg;",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 710,
+        "y": 220,
+        "wires": [
+            [
+                "5886d649e70e63ce"
+            ],
+            [
+                "aa4c803647540396"
+            ]
+        ]
+    },
+    {
+        "id": "5886d649e70e63ce",
+        "type": "function",
+        "z": "8e39c945bd692398",
+        "name": "Sterilisasi",
+        "func": "\nreturn msg;",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 900,
+        "y": 220,
+        "wires": [
+            [
+                "6f99eecf37480883"
+            ],
+            [
+                "b8a2b0d8b97da1f5"
+            ]
+        ]
+    },
+    {
+        "id": "6f99eecf37480883",
+        "type": "function",
+        "z": "8e39c945bd692398",
+        "name": "Pendinginan Awal",
+        "func": "\nreturn msg;",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1110,
+        "y": 220,
+        "wires": [
+            [
+                "d4fab15b032f88f9"
+            ],
+            [
+                "b34489d5bee61d4a"
+            ]
+        ]
+    },
+    {
+        "id": "97d3539be2677ce5",
+        "type": "function",
+        "z": "8e39c945bd692398",
+        "name": "Proses Akhir",
+        "func": "\nreturn msg;",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1530,
+        "y": 220,
+        "wires": [
+            [
+                "11f0bc6c817715f3"
+            ],
+            [
+                "ef68beb38363c953"
+            ]
+        ]
+    },
+    {
+        "id": "ac245832facb4940",
+        "type": "mysql",
+        "z": "8e39c945bd692398",
+        "mydb": "dec916b40ded4a6c",
+        "name": "cycle",
+        "x": 930,
+        "y": 300,
+        "wires": [
+            [
+                "dcd6430c0ef528ec"
+            ]
+        ]
+    },
+    {
+        "id": "dcd6430c0ef528ec",
+        "type": "debug",
+        "z": "8e39c945bd692398",
+        "name": "Debug cycle",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "chamber_result",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1150,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "7156c4c5cd3eb3e7",
+        "type": "mysql",
+        "z": "8e39c945bd692398",
+        "mydb": "dec916b40ded4a6c",
+        "name": "Insert",
+        "x": 470,
+        "y": 280,
+        "wires": [
+            [
+                "ef4e1bf171ec364c"
+            ]
+        ]
+    },
+    {
+        "id": "11f0bc6c817715f3",
+        "type": "function",
+        "z": "8e39c945bd692398",
+        "name": "Insert Sensor",
+        "func": "\nreturn msg;",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1730,
+        "y": 220,
+        "wires": [
+            [
+                "fd83df3ba677c3cb"
+            ],
+            [
+                "b65624a9ca5a8c6a"
+            ]
+        ]
+    },
+    {
+        "id": "d4fab15b032f88f9",
+        "type": "function",
+        "z": "8e39c945bd692398",
+        "name": "Pendinginan",
+        "func": "\nreturn msg;",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1330,
+        "y": 220,
+        "wires": [
+            [
+                "97d3539be2677ce5"
+            ],
+            [
+                "1da7f0d17d589d8b"
+            ]
+        ]
+    },
+    {
+        "id": "aa4c803647540396",
+        "type": "mysql",
+        "z": "8e39c945bd692398",
+        "mydb": "dec916b40ded4a6c",
+        "name": "cycle",
+        "x": 1130,
+        "y": 300,
+        "wires": [
+            [
+                "15d376041b449d46"
+            ]
+        ]
+    },
+    {
+        "id": "15d376041b449d46",
+        "type": "debug",
+        "z": "8e39c945bd692398",
+        "name": "debug cycle",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "chamber_result",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1330,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "b8a2b0d8b97da1f5",
+        "type": "mysql",
+        "z": "8e39c945bd692398",
+        "mydb": "dec916b40ded4a6c",
+        "name": "cycle",
+        "x": 1310,
+        "y": 300,
+        "wires": [
+            [
+                "b1479d92e52165cf"
+            ]
+        ]
+    },
+    {
+        "id": "b1479d92e52165cf",
+        "type": "debug",
+        "z": "8e39c945bd692398",
+        "name": "Debug cycle",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "chamber_result",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1570,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "b34489d5bee61d4a",
+        "type": "mysql",
+        "z": "8e39c945bd692398",
+        "mydb": "dec916b40ded4a6c",
+        "name": "cycle",
+        "x": 1550,
+        "y": 300,
+        "wires": [
+            [
+                "49985ac4aa021105"
+            ]
+        ]
+    },
+    {
+        "id": "49985ac4aa021105",
+        "type": "debug",
+        "z": "8e39c945bd692398",
+        "name": "Debug cycle",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "chamber_result",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1770,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "1da7f0d17d589d8b",
+        "type": "mysql",
+        "z": "8e39c945bd692398",
+        "mydb": "dec916b40ded4a6c",
+        "name": "cycle",
+        "x": 1750,
+        "y": 300,
+        "wires": [
+            [
+                "23190b585aa27eff"
+            ]
+        ]
+    },
+    {
+        "id": "23190b585aa27eff",
+        "type": "debug",
+        "z": "8e39c945bd692398",
+        "name": "Debug cycle",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "chamber_result",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1970,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "ef68beb38363c953",
+        "type": "mysql",
+        "z": "8e39c945bd692398",
+        "mydb": "dec916b40ded4a6c",
+        "name": "cycle",
+        "x": 1950,
+        "y": 300,
+        "wires": [
+            [
+                "f6a18b58a7ec29eb"
+            ]
+        ]
+    },
+    {
+        "id": "f6a18b58a7ec29eb",
+        "type": "debug",
+        "z": "8e39c945bd692398",
+        "name": "Debug cycle",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "chamber_result",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2170,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "b65624a9ca5a8c6a",
+        "type": "mysql",
+        "z": "8e39c945bd692398",
+        "mydb": "dec916b40ded4a6c",
+        "name": "cycle",
+        "x": 2150,
+        "y": 300,
+        "wires": [
+            [
+                "cd71b21cb81ce418"
+            ]
+        ]
+    },
+    {
+        "id": "cd71b21cb81ce418",
+        "type": "debug",
+        "z": "8e39c945bd692398",
+        "name": "Debug cycle",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "chamber_result",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2370,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "fd83df3ba677c3cb",
+        "type": "debug",
+        "z": "8e39c945bd692398",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1920,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "70e92955492b3b9c",
+        "type": "debug",
+        "z": "8e39c945bd692398",
+        "name": "identifikasi",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 730,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "29f783ee08637808",
+        "type": "debug",
+        "z": "8e39c945bd692398",
+        "name": "debug 9",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 460,
+        "y": 140,
+        "wires": []
+    },
+    {
         "id": "abb9824c35e440d9",
         "type": "inject",
         "z": "8d0798d68fe40ce6",
@@ -1902,7 +2508,7 @@
         "type": "function",
         "z": "8d0798d68fe40ce6",
         "name": "CREATE sensor_cycle",
-        "func": "msg.topic = `\nCREATE TABLE IF NOT EXISTS sensor_cycle (\n    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,\n\n    project_code CHAR(36) NOT NULL\n        COMMENT 'UUID CCP',\n\n    sensor_code VARCHAR(50) NOT NULL,\n\n    production_date DATE DEFAULT NULL,\n\n    cycle VARCHAR(50) NOT NULL,\n\n    start TIME DEFAULT NULL,\n\n    end TIME DEFAULT NULL,\n\n    status VARCHAR(20) NOT NULL,\n\n    data JSON DEFAULT NULL\n        COMMENT 'Data hasil olah CCP',\n\n    insert_at TIMESTAMP NOT NULL\n        DEFAULT CURRENT_TIMESTAMP,\n\n    update_at TIMESTAMP NOT NULL\n        DEFAULT CURRENT_TIMESTAMP\n        ON UPDATE CURRENT_TIMESTAMP,\n\n    PRIMARY KEY (id),\n\n    UNIQUE KEY uk_sensor_cycle (\n        project_code,\n        sensor_code,\n        cycle\n    ),\n\n    UNIQUE KEY unique_sensor_cycle (\n        project_code,\n        sensor_code,\n        production_date,\n        cycle\n    ),\n\n    KEY idx_project_sensor (\n        project_code,\n        sensor_code\n    ),\n\n    KEY idx_insert_at (\n        insert_at\n    ),\n\n    KEY idx_status (\n        status\n    )\n\n) ENGINE=InnoDB\nDEFAULT CHARSET=utf8mb4\nCOLLATE=utf8mb4_0900_ai_ci;\n`;\n\nreturn msg;",
+        "func": "msg.topic = `\nCREATE TABLE IF NOT EXISTS sensor_cycle (\n    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,\n\n    project_code CHAR(36) NOT NULL\n        COMMENT 'UUID CCP',\n\n    sensor_code VARCHAR(50) NOT NULL,\n\n    production_date DATE NOT NULL,\n\n    cycle VARCHAR(50) NOT NULL,\n\n    start TIME DEFAULT NULL,\n\n    end TIME DEFAULT NULL,\n\n    status VARCHAR(20) NOT NULL,\n\n    data JSON DEFAULT NULL\n        COMMENT 'Data hasil olah CCP',\n\n    insert_at TIMESTAMP NOT NULL\n        DEFAULT CURRENT_TIMESTAMP,\n\n    update_at TIMESTAMP NOT NULL\n        DEFAULT CURRENT_TIMESTAMP\n        ON UPDATE CURRENT_TIMESTAMP,\n\n    PRIMARY KEY (id),\n\n    UNIQUE KEY uk_sensor_cycle (\n        project_code,\n        sensor_code,\n        production_date,\n        cycle\n    ),\n\n    KEY idx_project_sensor (\n        project_code,\n        sensor_code\n    ),\n\n    KEY idx_production_date (\n        production_date\n    ),\n\n    KEY idx_insert_at (\n        insert_at\n    ),\n\n    KEY idx_status (\n        status\n    )\n\n) ENGINE=InnoDB\nDEFAULT CHARSET=utf8mb4\nCOLLATE=utf8mb4_0900_ai_ci;\n`;\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
