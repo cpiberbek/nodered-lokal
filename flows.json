@@ -843,7 +843,7 @@
         "type": "function",
         "z": "a850bca680aa7206",
         "name": "Versi di Nodered Dev 141",
-        "func": "/**********************************************************************\n * PROJECT VERSION\n *\n * HANYA DIUBAH PADA NODE-RED DEVELOPMENT.\n *\n * Ubah VERSION setiap selesai release sebelum Commit & Push.\n *\n * Production TIDAK PERLU mengubah node ini.\n **********************************************************************/\n\nconst VERSION = \"1.13.2\";\n\nmsg.version = VERSION;\n\nreturn msg;",
+        "func": "/**********************************************************************\n * PROJECT VERSION\n *\n * HANYA DIUBAH PADA NODE-RED DEVELOPMENT.\n *\n * Ubah VERSION setiap selesai release sebelum Commit & Push.\n *\n * Production TIDAK PERLU mengubah node ini.\n **********************************************************************/\n\nconst VERSION = \"1.13.3\";\n\nmsg.version = VERSION;\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -893,7 +893,7 @@
         "type": "function",
         "z": "a850bca680aa7206",
         "name": "📌 [Edit] Link di Nodered Live Tiap Plant",
-        "func": "/**********************************************************************\n * NODE-RED LINK\n *\n * HANYA DIUBAH PADA SERVER PRODUCTION.\n *\n * Isi sesuai URL Node-RED lokal.\n *\n * Development tidak perlu mengubah node ini.\n **********************************************************************/\n\nconst LINK = \"http://10.7.10.112:1880/\";\n\nmsg.link = LINK;\n\nreturn msg;",
+        "func": "/**********************************************************************\n * NODE-RED LINK\n *\n * HANYA DIUBAH PADA SERVER PRODUCTION.\n *\n * Isi sesuai URL Node-RED lokal.\n *\n * Development tidak perlu mengubah node ini.\n **********************************************************************/\n\nconst LINK = \"http://10.26.9.34/:1880/\";\n\nmsg.link = LINK;\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -1272,9 +1272,7 @@
         "mode": "link",
         "links": [
             "beda61830a8cd423",
-            "201ec202fe562130",
-            "9a176f3e297a9c60",
-            "b646dbdbdcb2d3fc"
+            "201ec202fe562130"
         ],
         "x": 1165,
         "y": 820,
