@@ -118,7 +118,7 @@
         "action": "",
         "pretty": true,
         "x": 530,
-        "y": 440,
+        "y": 460,
         "wires": [
             [
                 "4599b399b3698075"
@@ -137,8 +137,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1020,
-        "y": 620,
+        "x": 1240,
+        "y": 640,
         "wires": [
             [
                 "48639c479673093b"
@@ -199,7 +199,7 @@
         "name": "MQTT → Realtime DB",
         "info": " - Mendengarkan data sensor dari MQTT broker.\n - Parse payload dan insert ke tabel sensor_realtime.\n - Tujuan: menyimpan data mentah (realtime, high-resolution).",
         "x": 200,
-        "y": 440,
+        "y": 460,
         "wires": []
     },
     {
@@ -244,8 +244,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1020,
-        "y": 560,
+        "x": 1240,
+        "y": 580,
         "wires": [
             [
                 "48639c479673093b"
@@ -541,7 +541,7 @@
         "id": "76efd0daf1d7c3df",
         "type": "comment",
         "z": "a850bca680aa7206",
-        "name": "Versi 1.13",
+        "name": "Versi 1.14",
         "info": "liat detail versi ada di iot hub (directus)\nhttp://10.68.1.220:8055/",
         "x": 160,
         "y": 180,
@@ -559,8 +559,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 970,
-        "y": 440,
+        "x": 1190,
+        "y": 460,
         "wires": [
             [
                 "6afceffe057ff705"
@@ -580,13 +580,10 @@
         "finalize": "",
         "libs": [],
         "x": 690,
-        "y": 440,
+        "y": 460,
         "wires": [
             [
-                "489079518de56347",
-                "3e42471de8ff3207",
-                "9d396dfba006640c",
-                "5282bba4d8e7d9d0",
+                "1c13bf4db39a3431",
                 "b2e8a72f85a427a9"
             ]
         ]
@@ -603,8 +600,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 970,
-        "y": 500,
+        "x": 1190,
+        "y": 520,
         "wires": [
             [
                 "71a6110c68366f79"
@@ -623,8 +620,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1160,
-        "y": 500,
+        "x": 1380,
+        "y": 520,
         "wires": [
             [
                 "48639c479673093b"
@@ -843,7 +840,7 @@
         "type": "function",
         "z": "a850bca680aa7206",
         "name": "Versi di Nodered Dev 141",
-        "func": "/**********************************************************************\n * PROJECT VERSION\n *\n * HANYA DIUBAH PADA NODE-RED DEVELOPMENT.\n *\n * Ubah VERSION setiap selesai release sebelum Commit & Push.\n *\n * Production TIDAK PERLU mengubah node ini.\n **********************************************************************/\n\nconst VERSION = \"1.13.3\";\n\nmsg.version = VERSION;\n\nreturn msg;",
+        "func": "/**********************************************************************\n * PROJECT VERSION\n *\n * HANYA DIUBAH PADA NODE-RED DEVELOPMENT.\n *\n * Ubah VERSION setiap selesai release sebelum Commit & Push.\n *\n * Production TIDAK PERLU mengubah node ini.\n **********************************************************************/\n\nconst VERSION = \"1.14\";\n\nmsg.version = VERSION;\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -893,7 +890,7 @@
         "type": "function",
         "z": "a850bca680aa7206",
         "name": "📌 [Edit] Link di Nodered Live Tiap Plant",
-        "func": "/**********************************************************************\n * NODE-RED LINK\n *\n * HANYA DIUBAH PADA SERVER PRODUCTION.\n *\n * Isi sesuai URL Node-RED lokal.\n *\n * Development tidak perlu mengubah node ini.\n **********************************************************************/\n\nconst LINK = \"http://10.26.9.34/:1880/\";\n\nmsg.link = LINK;\n\nreturn msg;",
+        "func": "/**********************************************************************\n * NODE-RED LINK\n *\n * HANYA DIUBAH PADA SERVER PRODUCTION.\n *\n * Isi sesuai URL Node-RED lokal.\n *\n * Development tidak perlu mengubah node ini.\n **********************************************************************/\n\nconst LINK = \"http://10.26.9.34:1880/\";\n\nmsg.link = LINK;\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -934,8 +931,8 @@
         "z": "a850bca680aa7206",
         "mydb": "dec916b40ded4a6c",
         "name": "database",
-        "x": 1580,
-        "y": 500,
+        "x": 1800,
+        "y": 520,
         "wires": [
             []
         ]
@@ -997,9 +994,9 @@
         "id": "179f122c0665d0d7",
         "type": "function",
         "z": "a850bca680aa7206",
-        "name": "Link IoT Hub",
-        "func": "const plantAbbrivation = flow.get(\"plant_abbrivation\");\n\nif (!plantAbbrivation) {\n    node.error(\n        \"plant_abbrivation belum tersedia di flow context.\"\n    );\n    return null;\n}\n\nmsg.plant_abbrivation = plantAbbrivation;\n\nconst baseUrl =\n    \"http://10.68.1.220:8055/items/sensor\";\n\n// Filter berdasarkan plant\nconst filterPlant =\n    \"filter[plant][abbrivation][_eq]=\" +\n    encodeURIComponent(plantAbbrivation);\n\n// Jika tetap ingin hanya sensor CCP\nconst filterCCPNotNull =\n    \"filter[ccp][_nnull]=true\";\n\nconst selectFields =\n    \"fields=*,ccp.uuid\";\n\nmsg.url =\n    `${baseUrl}?${filterPlant}&${filterCCPNotNull}&${selectFields}`;\n\nmsg.headers = {\n    \"Authorization\": \"Bearer AZ1ByHZWlFh8GjKRGngMX-If12RnXAFP\",\n    \"Content-Type\": \"application/json\"\n};\n\nreturn msg;",
-        "outputs": 1,
+        "name": "Link IoT Hub edit",
+        "func": "const plantAbbrivation = flow.get(\"plant_abbrivation\");\n\nif (!plantAbbrivation) {\n    node.error(\n        \"plant_abbrivation belum tersedia di flow context.\"\n    );\n    return null;\n}\n\nmsg.plant_abbrivation = plantAbbrivation;\n\nconst baseUrl =\n    \"http://10.68.1.220:8055/items/sensor\";\n\n// Filter berdasarkan plant\nconst filterPlant =\n    \"filter[plant][abbrivation][_eq]=\" +\n    encodeURIComponent(plantAbbrivation);\n\n// Field yang diambil\nconst selectFields =\n    \"fields=*,ccp.uuid\";\n\n\n// ========================\n// OUTPUT 1 — CCP\n// ========================\n\nconst filterCCPNotNull =\n    \"filter[ccp][_nnull]=true\";\n\nconst msgCCP = {\n    ...msg,\n    url: `${baseUrl}?${filterPlant}&${filterCCPNotNull}&${selectFields}`,\n    headers: {\n        \"Authorization\": \"Bearer AZ1ByHZWlFh8GjKRGngMX-If12RnXAFP\",\n        \"Content-Type\": \"application/json\"\n    }\n};\n\n\n// ========================\n// OUTPUT 2 — NON CCP\n// ========================\n\nconst filterCCPNull =\n    \"filter[ccp][_null]=true\";\n\nconst msgNonCCP = {\n    ...msg,\n    url: `${baseUrl}?${filterPlant}&${filterCCPNull}&${selectFields}`,\n    headers: {\n        \"Authorization\": \"Bearer AZ1ByHZWlFh8GjKRGngMX-If12RnXAFP\",\n        \"Content-Type\": \"application/json\"\n    }\n};\n\n\n// Kirim ke 2 output\nreturn [\n    msgCCP,\n    msgNonCCP\n];",
+        "outputs": 2,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
@@ -1010,6 +1007,9 @@
         "wires": [
             [
                 "46b54a9806aea0f4"
+            ],
+            [
+                "f11b8856bea9e83a"
             ]
         ]
     },
@@ -1049,7 +1049,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1270,
+        "x": 1250,
         "y": 700,
         "wires": [
             [
@@ -1079,7 +1079,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1230,
+        "x": 1210,
         "y": 760,
         "wires": [
             [
@@ -1101,7 +1101,7 @@
         "correl": "",
         "expiry": "",
         "broker": "95030b5bf43fa98e",
-        "x": 1490,
+        "x": 1390,
         "y": 760,
         "wires": []
     },
@@ -1119,8 +1119,8 @@
         "correl": "",
         "expiry": "",
         "broker": "95030b5bf43fa98e",
-        "x": 1170,
-        "y": 440,
+        "x": 1390,
+        "y": 460,
         "wires": []
     },
     {
@@ -1195,7 +1195,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1400,
+        "x": 1460,
         "y": 340,
         "wires": []
     },
@@ -1213,7 +1213,7 @@
         "id": "a00a0cc7ef007095",
         "type": "function",
         "z": "a850bca680aa7206",
-        "name": "Save Sensor Data",
+        "name": "Save Sensor Data CCP",
         "func": "if (\n    !msg.payload ||\n    !Array.isArray(msg.payload.data)\n) {\n    node.error(\"Response sensor dari Directus tidak valid\");\n    return null;\n}\n\nconst sensors = msg.payload.data;\n\n// Simpan daftar sensor ke flow context\nflow.set(\"sensor_data\", sensors);\n\n// Simpan jumlah sensor\nflow.set(\"sensor_count\", sensors.length);\n\nnode.status({\n    fill: \"green\",\n    shape: \"dot\",\n    text: `${sensors.length} sensor tersimpan`\n});\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
@@ -1221,7 +1221,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1210,
+        "x": 1230,
         "y": 340,
         "wires": [
             [
@@ -1241,8 +1241,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 970,
-        "y": 700,
+        "x": 870,
+        "y": 760,
         "wires": [
             [
                 "dd982eac8b9e9451",
@@ -1274,8 +1274,8 @@
             "beda61830a8cd423",
             "201ec202fe562130"
         ],
-        "x": 1165,
-        "y": 820,
+        "x": 1135,
+        "y": 860,
         "wires": []
     },
     {
@@ -1446,22 +1446,6 @@
         "wires": []
     },
     {
-        "id": "3bc88b03e30af0be",
-        "type": "debug",
-        "z": "a850bca680aa7206",
-        "name": "debug 2",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 560,
-        "y": 520,
-        "wires": []
-    },
-    {
         "id": "fa35ef274d9e5f2b",
         "type": "debug",
         "z": "a850bca680aa7206",
@@ -1473,8 +1457,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1000,
-        "y": 820,
+        "x": 1180,
+        "y": 800,
         "wires": []
     },
     {
@@ -1485,17 +1469,100 @@
         "topic": "data/01/#",
         "qos": "2",
         "datatype": "auto",
-        "broker": "3dd935c7f9f57cbe",
+        "broker": "",
         "nl": false,
         "rap": true,
         "rh": 0,
         "inputs": 0,
         "x": 370,
-        "y": 440,
+        "y": 460,
         "wires": [
             [
-                "f775e65ba0493565",
-                "3bc88b03e30af0be"
+                "f775e65ba0493565"
+            ]
+        ]
+    },
+    {
+        "id": "1c13bf4db39a3431",
+        "type": "function",
+        "z": "a850bca680aa7206",
+        "name": "Filter NonCCP",
+        "func": "// Ambil master sensor dari Flow Context\nconst sensors = flow.get(\"sensor_data_nonccp\");\n\nif (!Array.isArray(sensors)) {\n    node.warn(\"sensor_data belum tersedia\");\n    return null;\n}\n\n// Cari sensor berdasarkan kode sensor\nconst sensor = sensors.find(\n    item => item.kode_sensor === msg.sensor_code\n);\n\nif (!sensor) {\n    return null;\n}\n\n// Pastikan sensor memiliki CCP\nif (\n    sensor.ccp === null ||\n    sensor.ccp === undefined ||\n    sensor.ccp === \"\"\n) {\n    return null;\n}\n\n// Simpan informasi CCP ke msg\nmsg.ccp = sensor.ccp;\n\n// Simpan UUID CCP secara langsung agar mudah digunakan\nmsg.ccp_uuid = sensor.ccp.uuid;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 860,
+        "y": 460,
+        "wires": [
+            [
+                "489079518de56347",
+                "5282bba4d8e7d9d0",
+                "3e42471de8ff3207",
+                "9d396dfba006640c"
+            ]
+        ]
+    },
+    {
+        "id": "f11b8856bea9e83a",
+        "type": "http request",
+        "z": "a850bca680aa7206",
+        "name": "Get IoT Hub",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 1010,
+        "y": 400,
+        "wires": [
+            [
+                "14832f5241f691a1"
+            ]
+        ]
+    },
+    {
+        "id": "22e7150e37a1831c",
+        "type": "debug",
+        "z": "a850bca680aa7206",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1500,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "14832f5241f691a1",
+        "type": "function",
+        "z": "a850bca680aa7206",
+        "name": "Save Sensor Data nonCCP",
+        "func": "if (\n    !msg.payload ||\n    !Array.isArray(msg.payload.data)\n) {\n    node.error(\"Response sensor dari Directus tidak valid\");\n    return null;\n}\n\nconst sensors = msg.payload.data;\n\n// Simpan daftar sensor ke flow context\nflow.set(\"sensor_data_nonccp\", sensors);\n\n// Simpan jumlah sensor\nflow.set(\"sensor_count\", sensors.length);\n\nnode.status({\n    fill: \"green\",\n    shape: \"dot\",\n    text: `${sensors.length} sensor tersimpan`\n});\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1240,
+        "y": 400,
+        "wires": [
+            [
+                "22e7150e37a1831c"
             ]
         ]
     },
