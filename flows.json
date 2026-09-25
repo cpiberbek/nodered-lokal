@@ -32,6 +32,14 @@
         "env": []
     },
     {
+        "id": "178528bcb30ba537",
+        "type": "tab",
+        "label": "Machine - Stunner",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "fae6fc6b5acf089c",
         "type": "websocket-listener",
         "path": "/ws/sensor_realtime/latest",
@@ -108,6 +116,36 @@
         "willMsg": {},
         "userProps": "",
         "sessionExpiry": ""
+    },
+    {
+        "id": "e8f281e4d2a267bf",
+        "type": "MySQLdatabase",
+        "name": "IOT SGN",
+        "host": "127.0.0.1",
+        "port": "3306",
+        "db": "iot_sgn",
+        "tz": "",
+        "charset": "UTF8"
+    },
+    {
+        "id": "5a21ef45a2901a12",
+        "type": "ui_group",
+        "name": "Control Stunner",
+        "tab": "c88019aa129031bb",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "c88019aa129031bb",
+        "type": "ui_tab",
+        "name": "Stunner HMI",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
     },
     {
         "id": "f775e65ba0493565",
@@ -1567,6 +1605,72 @@
         ]
     },
     {
+        "id": "221ebd9650be2a46",
+        "type": "http in",
+        "z": "a850bca680aa7206",
+        "name": "POST IN",
+        "url": "/directus/sensor-refresh",
+        "method": "post",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 380,
+        "y": 540,
+        "wires": [
+            [
+                "be44f97f2c18107c",
+                "5177b7368add916f"
+            ]
+        ]
+    },
+    {
+        "id": "cc4cbfc46376997d",
+        "type": "http response",
+        "z": "a850bca680aa7206",
+        "name": "RESPONSE",
+        "statusCode": "",
+        "headers": {},
+        "x": 570,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "be44f97f2c18107c",
+        "type": "debug",
+        "z": "a850bca680aa7206",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 580,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "5177b7368add916f",
+        "type": "function",
+        "z": "a850bca680aa7206",
+        "name": "function 1",
+        "func": "msg.statusCode = 200;\nmsg.payload = {\n    success: true,\n    message: \"Node-RED menerima request refresh\"\n};\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 500,
+        "y": 660,
+        "wires": [
+            [
+                "cc4cbfc46376997d"
+            ]
+        ]
+    },
+    {
         "id": "beda61830a8cd423",
         "type": "link in",
         "z": "6e80b4feb5e1d092",
@@ -2123,6 +2227,264 @@
         "statusType": "auto",
         "x": 1160,
         "y": 240,
+        "wires": []
+    },
+    {
+        "id": "e8152a765f93f699",
+        "type": "inject",
+        "z": "178528bcb30ba537",
+        "name": "Sync IoT Hub (1 Jam)",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "3600",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 190,
+        "y": 100,
+        "wires": [
+            [
+                "10b40b8f74f89c82"
+            ]
+        ]
+    },
+    {
+        "id": "10b40b8f74f89c82",
+        "type": "http request",
+        "z": "178528bcb30ba537",
+        "name": "GET CCP Standards",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://10.68.1.220:8055/items/ccp_standards?fields=*,plant_code.*&access_token=AZ1ByHZWlFh8GjKRGngMX-If12RnXAFP",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 420,
+        "y": 100,
+        "wires": [
+            [
+                "ef694996d95f487b",
+                "25123ba99fed6d2d"
+            ]
+        ]
+    },
+    {
+        "id": "ef694996d95f487b",
+        "type": "function",
+        "z": "178528bcb30ba537",
+        "name": "Parsing & Save RAM",
+        "func": "const items = msg.payload?.data;\n\nif (!Array.isArray(items) || items.length === 0) {\n    node.error(\"Data ccp_standards dari Directus kosong!\", msg);\n    return null;\n}\n\nconst parseNum = (val) => {\n    if (typeof val === 'string') {\n        return parseFloat(val.replace(',', '.'));\n    }\n    return Number(val) || 0;\n};\n\nitems.forEach(item => {\n    const plantCode = item.plant_code?.abbrivation || \"SRG\";\n    const rawStandards = item.standards || [];\n\n    const formattedList = rawStandards.map(std => ({\n        chicken_size: std.chicken_size,\n        weight_min: parseNum(std.weight_min),\n        weight_max: parseNum(std.weight_max),\n        v_min: parseNum(std.v_min),\n        v_max: parseNum(std.v_max),\n        i_min: parseNum(std.i_min),\n        i_max: parseNum(std.i_max),\n        f_min: parseNum(std.f_min),\n        f_max: parseNum(std.f_max)\n    }));\n\n    global.set(`stunner_standards_${plantCode}`, formattedList);\n\n    node.status({\n        fill: \"green\",\n        shape: \"dot\",\n        text: `RAM ${plantCode}: ${formattedList.length} Size Loaded`\n    });\n});\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 660,
+        "y": 100,
+        "wires": [
+            [
+                "3c60ecf150247f01"
+            ]
+        ]
+    },
+    {
+        "id": "3c60ecf150247f01",
+        "type": "debug",
+        "z": "178528bcb30ba537",
+        "name": "Debug RAM Sync",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 890,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "25123ba99fed6d2d",
+        "type": "debug",
+        "z": "178528bcb30ba537",
+        "name": "Debug Directus GET",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 660,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "95dbe7cf7a419794",
+        "type": "link in",
+        "z": "178528bcb30ba537",
+        "name": "Terima Data Stunner",
+        "links": [
+            "685feb394790ccaf"
+        ],
+        "x": 55,
+        "y": 240,
+        "wires": [
+            [
+                "ce2950af88b016d0"
+            ]
+        ]
+    },
+    {
+        "id": "ce2950af88b016d0",
+        "type": "function",
+        "z": "178528bcb30ba537",
+        "name": "Filter Stunner by UUID",
+        "func": "const STUNNER_CCP_UUID = \"674ad6bf-7d58-407f-9f87-8f4f3d2afe92\";\n\nif (!msg.ccp || !msg.ccp.uuid) {\n    return null;\n}\n\nif (msg.ccp.uuid !== STUNNER_CCP_UUID) {\n    return null;\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 200,
+        "y": 240,
+        "wires": [
+            [
+                "cb9c1532e239e8d0"
+            ]
+        ]
+    },
+    {
+        "id": "cb9c1532e239e8d0",
+        "type": "function",
+        "z": "178528bcb30ba537",
+        "name": "Auto Batch & State Machine",
+        "func": "const plantCode = flow.get(\"plant_abbrivation\") || \"SRG\";\nconst standards = global.get(`stunner_standards_${plantCode}`) || [];\n\nif (!standards.length) {\n    node.status({ fill: \"red\", shape: \"ring\", text: \"Menunggu data Directus...\" });\n    return [null, null, null];\n}\n\nlet state = flow.get(\"stunner_state\") || {\n    status: \"IDLE\",\n    truck_count: 0,\n    truck_start_time: null,\n    last_active_time: Date.now(),\n    drop_start_time: Date.now(),\n    history_arus: [],\n    status_list: [],\n    batch_info: null\n};\n\nconst MIN_ARUS = 0.08;\nconst SAMPLE_LIMIT = 15;\nconst TIME_15_SEC = 15000;\nconst TIME_2_MIN = 120000;\nconst TIME_3_HR = 10800000;\n\nconst sensorCode = msg.sensor_code;\nconst val = Number(msg.value) || 0;\nconst timestamp = new Date(msg.timestamp || Date.now()).getTime();\n\nlet msgToEvaluator = null;\nlet msgToUI = null;\nlet msgReport = null;\n\nconst toSQLTime = (ms) => new Date(ms).toTimeString().split(' ')[0];\n\n// ====================================================\n// FUNGSI 1: MENGISI WAKTU 'END' SAAT TRUCK SELESAI\n// ====================================================\nfunction calculateFinalStats() {\n    let durationMs = state.drop_start_time - state.truck_start_time;\n    if (durationMs < 0) durationMs = 0;\n\n    let m = Math.floor(durationMs / 60000);\n    let s = Math.floor((durationMs % 60000) / 1000);\n\n    let sum = state.history_arus.reduce((a, b) => a + b, 0);\n    let finalAvg = state.history_arus.length ? (sum / state.history_arus.length).toFixed(3) : 0;\n\n    let truckId = state.batch_info ? state.batch_info.truck_id : \"Truck \" + state.truck_count;\n    let size = state.batch_info ? state.batch_info.size : \"UNKNOWN\";\n    let std = state.batch_info?.std || { v_min: 0, v_max: 0, i_min: 0, i_max: 0, f_min: 0, f_max: 0 };\n\n    let finalStatus = \"OK\";\n    let statusList = state.status_list || [];\n    if (statusList.includes(\"OVER_STUNNED\")) finalStatus = \"OVER_STUNNED\";\n    else if (statusList.includes(\"UNDER_STUNNED\")) finalStatus = \"UNDER_STUNNED\";\n\n    let startTime = toSQLTime(state.truck_start_time);\n    let endTime = toSQLTime(state.drop_start_time);\n    let durationMin = Number((durationMs / 60000).toFixed(2));\n\n    let jsonData = JSON.stringify({\n        truck_id: truckId,\n        chicken_size: size,\n        durasi_teks: m + \" Menit \" + s + \" Detik\",\n        durasi_menit: durationMin,\n        avg_arus: Number(finalAvg),\n        eval_summary: finalStatus,\n        v_min: std.v_min, v_max: std.v_max,\n        i_min: std.i_min, i_max: std.i_max,\n        f_min: std.f_min, f_max: std.f_max\n    });\n\n    let ccpUuid = msg.ccp?.uuid || msg.ccp_uuid || \"674ad6bf-7d58-407f-9f87-8f4f3d2afe92\";\n\n    // Update kolom 'end' dan data final\n    let sql = `\n        INSERT INTO sensor_cycle \n        (project_code, sensor_code, production_date, cycle, start, end, status, data)\n        VALUES \n        ('${ccpUuid}', 'STUNNER_SUMMARY', CURDATE(), '${truckId}', '${startTime}', '${endTime}', '${finalStatus}', '${jsonData}')\n        ON DUPLICATE KEY UPDATE \n        end=VALUES(end), status=VALUES(status), data=VALUES(data);\n    `;\n\n    msgReport = {\n        topic: sql,\n        payload: { truck_id: truckId, size: size, status: finalStatus }\n    };\n\n    state.batch_info = null;\n    state.status_list = [];\n    flow.set('active_batch', null);\n}\n\n// ====================================================\n// FUNGSI 2: MEMBUAT SUMMARY DENGAN WAKTU 'START' SAJA\n// ====================================================\nif (sensorCode && sensorCode.includes(\"0101\")) {\n    const valArus = val;\n\n    if (timestamp - state.last_active_time >= TIME_3_HR && state.status !== \"ACTIVE\" && state.status !== \"DETECTING\") {\n        state.truck_count = 0;\n    }\n\n    if (valArus >= MIN_ARUS) {\n        state.last_active_time = timestamp;\n\n        if (state.status === \"IDLE\" || state.status === \"REST\" || state.status === \"DROPPED\") {\n            if (state.status === \"DROPPED\" && state.batch_info) calculateFinalStats();\n\n            state.status = \"DETECTING\";\n            state.truck_count += 1;\n            state.truck_start_time = timestamp;\n            state.history_arus = [valArus];\n            state.status_list = [];\n            node.status({ fill: \"yellow\", shape: \"ring\", text: \"Mendeteksi Truck \" + state.truck_count + \"...\" });\n        }\n        else if (state.status === \"DETECTING\") {\n            state.history_arus.push(valArus);\n            if (state.history_arus.length >= SAMPLE_LIMIT) {\n                let sum = state.history_arus.reduce((a, b) => a + b, 0);\n                let avg = sum / state.history_arus.length;\n\n                let matchedStd = standards.find(std => avg >= std.i_min && avg <= std.i_max);\n                if (!matchedStd && standards.length > 0) matchedStd = standards[0];\n\n                let detectedSize = matchedStd ? matchedStd.chicken_size : \"AYAM_KECIL\";\n\n                state.batch_info = {\n                    truck_id: \"Truck \" + state.truck_count,\n                    plant: plantCode,\n                    size: detectedSize,\n                    avg_weight: matchedStd ? matchedStd.weight_min + \" - \" + matchedStd.weight_max : \"\",\n                    std: matchedStd ? {\n                        v_min: matchedStd.v_min, v_max: matchedStd.v_max,\n                        i_min: matchedStd.i_min, i_max: matchedStd.i_max,\n                        f_min: matchedStd.f_min, f_max: matchedStd.f_max\n                    } : { v_min: 0, v_max: 0, i_min: 0, i_max: 0, f_min: 0, f_max: 0 },\n                    start_time: state.truck_start_time\n                };\n\n                flow.set('active_batch', state.batch_info);\n                state.status = \"ACTIVE\";\n\n                // BIKIN SUMMARY AWAL (TANPA END TIME)\n                let std = state.batch_info.std;\n                let ccpUuid = msg.ccp?.uuid || msg.ccp_uuid || \"674ad6bf-7d58-407f-9f87-8f4f3d2afe92\";\n                let startTime = toSQLTime(state.truck_start_time);\n\n                let initialJsonData = JSON.stringify({\n                    truck_id: state.batch_info.truck_id,\n                    chicken_size: detectedSize,\n                    avg_weight: state.batch_info.avg_weight,\n                    eval_summary: \"ONGOING\",\n                    v_min: std.v_min, v_max: std.v_max,\n                    i_min: std.i_min, i_max: std.i_max,\n                    f_min: std.f_min, f_max: std.f_max\n                });\n                \n                let startSql = `\n                    INSERT INTO sensor_cycle \n                    (project_code, sensor_code, production_date, cycle, start, end, status, data)\n                    VALUES \n                    ('${ccpUuid}', 'STUNNER_SUMMARY', CURDATE(), '${state.batch_info.truck_id}', '${startTime}', NULL, 'ONGOING', '${initialJsonData}')\n                    ON DUPLICATE KEY UPDATE status=VALUES(status), data=VALUES(data);\n                `;\n                node.send([null, { payload: state.batch_info }, { topic: startSql }]);\n\n                node.status({ fill: \"green\", shape: \"dot\", text: state.batch_info.truck_id + \" | \" + detectedSize + \" (\" + avg.toFixed(3) + \"A)\" });\n            }\n        }\n        else if (state.status === \"ACTIVE\") {\n            state.history_arus.push(valArus);\n        }\n    }\n    else {\n        if (state.status === \"ACTIVE\" || state.status === \"DETECTING\") {\n            state.status = \"DROPPED\";\n            state.drop_start_time = timestamp;\n        }\n        else if (state.status === \"DROPPED\") {\n            let dropDuration = timestamp - state.drop_start_time;\n            if (dropDuration >= TIME_15_SEC) {\n                if (state.batch_info || (state.truck_count > 0 && state.history_arus.length > 0)) calculateFinalStats();\n                state.status = \"IDLE\";\n                node.status({ fill: \"grey\", shape: \"dot\", text: \"IDLE (Tunggu Truck)\" });\n            }\n        }\n        else if (state.status === \"IDLE\") {\n            let idleDuration = timestamp - state.drop_start_time;\n            if (idleDuration >= TIME_2_MIN && idleDuration < TIME_3_HR) {\n                state.status = \"REST\";\n                node.status({ fill: \"blue\", shape: \"ring\", text: \"Istirahat (> 2 Menit)\" });\n            }\n        }\n    }\n}\n\nif (state.status === \"ACTIVE\" && state.batch_info) {\n    msgToEvaluator = RED.util.cloneMessage(msg);\n    msgToEvaluator.batch_info = state.batch_info;\n}\n\nflow.set(\"stunner_state\", state);\nreturn [msgToEvaluator, msgToUI, msgReport];",
+        "outputs": 3,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 460,
+        "y": 240,
+        "wires": [
+            [
+                "e6e7075e2705cc24"
+            ],
+            [
+                "6a6f6a55563285e1"
+            ],
+            [
+                "aa3538155449de1f",
+                "166a9895768d5355",
+                "4a0c4c8592a70de9"
+            ]
+        ]
+    },
+    {
+        "id": "e6e7075e2705cc24",
+        "type": "function",
+        "z": "178528bcb30ba537",
+        "name": "Stunner Telemetry Evaluator",
+        "func": "const activeBatch = flow.get('active_batch');\n\nif (!activeBatch) {\n    node.status({ fill: \"grey\", shape: \"ring\", text: \"Idle - Tunggu Batch Start\" });\n    return null;\n}\n\nconst sensorCode = msg.sensor_code || \"\";\nconst val = Number(msg.value) || 0;\nconst timestamp = msg.timestamp || new Date();\nconst ccpUuid = msg.ccp?.uuid || \"674ad6bf-7d58-407f-9f87-8f4f3d2afe92\";\n\nconst std = activeBatch.std;\nlet status = \"OK\";\n\n// 1. Siapkan kerangka dasar JSON\nlet cycleDataObj = {\n    truck_id: activeBatch.truck_id,\n    chicken_size: activeBatch.size,\n    avg_weight: activeBatch.avg_weight,\n    last_val: val,\n    eval_status: status // Akan diupdate di bawah\n};\n\n// 2. Evaluasi status & Sisipkan threshold sesuai kode sensor\nif (sensorCode.includes(\"0301\")) { // TEGANGAN\n    if (val < std.v_min) status = \"UNDER_STUNNED\";\n    else if (val > std.v_max) status = \"OVER_STUNNED\";\n\n    // Masukkan threshold tegangan ke JSON\n    cycleDataObj.v_min = std.v_min;\n    cycleDataObj.v_max = std.v_max;\n\n} else if (sensorCode.includes(\"0101\")) { // ARUS\n    if (val < std.i_min) status = \"UNDER_STUNNED\";\n    else if (val > std.i_max) status = \"OVER_STUNNED\";\n\n    // Masukkan threshold arus ke JSON\n    cycleDataObj.i_min = std.i_min;\n    cycleDataObj.i_max = std.i_max;\n\n} else if (sensorCode.includes(\"0501\")) { // FREKUENSI\n    if (val < std.f_min) status = \"UNDER_STUNNED\";\n    else if (val > std.f_max) status = \"OVER_STUNNED\";\n\n    // Masukkan threshold frekuensi ke JSON\n    cycleDataObj.f_min = std.f_min;\n    cycleDataObj.f_max = std.f_max;\n}\n\n// Update eval_status akhir ke dalam objek JSON\ncycleDataObj.eval_status = status;\n\n// ---------------------------------------------------------\n// SIMPAN STATUS KE STATE (UNTUK AKUMULASI STATUS AKHIR TRUCK)\n// ---------------------------------------------------------\nlet currentState = flow.get(\"stunner_state\") || {};\nif (!currentState.status_list) {\n    currentState.status_list = [];\n}\ncurrentState.status_list.push(status);\nflow.set(\"stunner_state\", currentState);\n// ---------------------------------------------------------\n\nconst sqlMachine = `\nINSERT INTO sensor_machine (project_code, sensor_code, value, cycle, timestamp)\nVALUES ('${ccpUuid}', '${sensorCode}', '${val}', '${activeBatch.truck_id}', '${timestamp}');\n`;\n\n// Stringify objek JSON yang sudah disisipkan threshold spesifik\nconst cycleDataStr = JSON.stringify(cycleDataObj);\n\nconst sqlCycle = `\nINSERT INTO sensor_cycle (project_code, sensor_code, production_date, cycle, status, data)\nVALUES ('${ccpUuid}', '${sensorCode}', CURDATE(), '${activeBatch.truck_id}', '${status}', '${cycleDataStr}')\nON DUPLICATE KEY UPDATE status=VALUES(status), data=VALUES(data);\n`;\n\nlet msgMachine = RED.util.cloneMessage(msg);\nmsgMachine.topic = sqlMachine;\n\nlet msgCycle = RED.util.cloneMessage(msg);\nmsgCycle.topic = sqlCycle;\n\nnode.status({\n    fill: status === \"OK\" ? \"green\" : \"red\",\n    shape: \"dot\",\n    text: activeBatch.truck_id + \" | \" + sensorCode + \": \" + val + \" (\" + status + \")\"\n});\n\nreturn [msgMachine, msgCycle];",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 780,
+        "y": 180,
+        "wires": [
+            [
+                "166a9895768d5355"
+            ],
+            [
+                "166a9895768d5355"
+            ]
+        ]
+    },
+    {
+        "id": "166a9895768d5355",
+        "type": "mysql",
+        "z": "178528bcb30ba537",
+        "mydb": "",
+        "name": "Database MySQL SGN",
+        "x": 1070,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "aa3538155449de1f",
+        "type": "debug",
+        "z": "178528bcb30ba537",
+        "name": "Laporan Durasi Truck",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 780,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "4a0c4c8592a70de9",
+        "type": "ui_toast",
+        "z": "178528bcb30ba537",
+        "position": "top right",
+        "displayTime": "4",
+        "highlight": "",
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "className": "",
+        "name": "Notifikasi HMI",
+        "x": 760,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "6a6f6a55563285e1",
+        "type": "ui_text",
+        "z": "178528bcb30ba537",
+        "group": "5a21ef45a2901a12",
+        "order": 1,
+        "width": 6,
+        "height": 4,
+        "name": "Display Active Batch",
+        "label": "STATUS BATCH AKTIF",
+        "format": "<b>Truk:</b> {{msg.payload.truck_id}}<br><b>Ukuran:</b> {{msg.payload.size}}<br><b>Rentang Bobot:</b> {{msg.payload.avg_weight}} kg<br><b>Std V:</b> {{msg.payload.std.v_min}}-{{msg.payload.std.v_max}}V | <b>Std I:</b> {{msg.payload.std.i_min}}-{{msg.payload.std.i_max}}A",
+        "layout": "col-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 780,
+        "y": 220,
         "wires": []
     }
 ]
