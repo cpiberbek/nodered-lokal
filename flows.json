@@ -24,17 +24,17 @@
         "env": []
     },
     {
-        "id": "8d0798d68fe40ce6",
+        "id": "178528bcb30ba537",
         "type": "tab",
-        "label": "DB_Initialisation",
+        "label": "Machine - Stunner",
         "disabled": false,
         "info": "",
         "env": []
     },
     {
-        "id": "178528bcb30ba537",
+        "id": "8d0798d68fe40ce6",
         "type": "tab",
-        "label": "Machine - Stunner",
+        "label": "DB_Initialisation",
         "disabled": false,
         "info": "",
         "env": []
@@ -118,14 +118,13 @@
         "sessionExpiry": ""
     },
     {
-        "id": "e8f281e4d2a267bf",
-        "type": "MySQLdatabase",
-        "name": "IOT SGN",
-        "host": "127.0.0.1",
-        "port": "3306",
-        "db": "iot_sgn",
-        "tz": "",
-        "charset": "UTF8"
+        "id": "c88019aa129031bb",
+        "type": "ui_tab",
+        "name": "Stunner HMI",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
     },
     {
         "id": "5a21ef45a2901a12",
@@ -139,13 +138,100 @@
         "className": ""
     },
     {
-        "id": "c88019aa129031bb",
-        "type": "ui_tab",
-        "name": "Stunner HMI",
-        "icon": "dashboard",
-        "order": 1,
-        "disabled": false,
-        "hidden": false
+        "id": "9385f55dc2e912bc",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
     },
     {
         "id": "f775e65ba0493565",
@@ -809,25 +895,6 @@
         "wires": []
     },
     {
-        "id": "26f1938210510e40",
-        "type": "inject",
-        "z": "a850bca680aa7206",
-        "name": "",
-        "props": [],
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 350,
-        "y": 260,
-        "wires": [
-            [
-                "2d2d433b8c5f14a2"
-            ]
-        ]
-    },
-    {
         "id": "e2e920927c938a62",
         "type": "http request",
         "z": "a850bca680aa7206",
@@ -843,7 +910,7 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 1290,
+        "x": 1650,
         "y": 260,
         "wires": [
             [
@@ -867,7 +934,7 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 1840,
+        "x": 2200,
         "y": 260,
         "wires": [
             []
@@ -885,7 +952,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 890,
+        "x": 1250,
         "y": 260,
         "wires": [
             [
@@ -905,7 +972,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1560,
+        "x": 1920,
         "y": 260,
         "wires": [
             [
@@ -935,7 +1002,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 600,
+        "x": 960,
         "y": 260,
         "wires": [
             [
@@ -955,7 +1022,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1110,
+        "x": 1470,
         "y": 260,
         "wires": [
             [
@@ -1040,7 +1107,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 830,
+        "x": 1110,
         "y": 340,
         "wires": [
             [
@@ -1067,7 +1134,7 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 1010,
+        "x": 1290,
         "y": 340,
         "wires": [
             [
@@ -1185,18 +1252,18 @@
         "id": "8f3b2fee1e13433a",
         "type": "inject",
         "z": "a850bca680aa7206",
-        "name": "",
+        "name": "Inject Manual untuk Delete Sensor",
         "props": [],
-        "repeat": "60",
+        "repeat": "",
         "crontab": "",
-        "once": true,
+        "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 430,
-        "y": 340,
+        "x": 480,
+        "y": 360,
         "wires": [
             [
-                "313d69412f701cb6"
+                "e18493f03ec9f27e"
             ]
         ]
     },
@@ -1212,7 +1279,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 620,
+        "x": 900,
         "y": 340,
         "wires": [
             [
@@ -1229,11 +1296,11 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
+        "complete": "true",
+        "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1460,
+        "x": 1740,
         "y": 340,
         "wires": []
     },
@@ -1241,9 +1308,9 @@
         "id": "375c73f35eb627e8",
         "type": "comment",
         "z": "a850bca680aa7206",
-        "name": "GET CCP Sensor IoT Hub",
+        "name": "GET Sensors IoT Hub",
         "info": "",
-        "x": 210,
+        "x": 200,
         "y": 340,
         "wires": []
     },
@@ -1259,7 +1326,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1230,
+        "x": 1510,
         "y": 340,
         "wires": [
             [
@@ -1285,8 +1352,7 @@
             [
                 "dd982eac8b9e9451",
                 "ca4552f53062b00c",
-                "685feb394790ccaf",
-                "fa35ef274d9e5f2b"
+                "685feb394790ccaf"
             ]
         ]
     },
@@ -1309,11 +1375,12 @@
         "name": "Kirim ke Flow CCP",
         "mode": "link",
         "links": [
-            "beda61830a8cd423",
-            "201ec202fe562130"
+            "201ec202fe562130",
+            "95dbe7cf7a419794",
+            "beda61830a8cd423"
         ],
-        "x": 1135,
-        "y": 860,
+        "x": 1145,
+        "y": 820,
         "wires": []
     },
     {
@@ -1484,30 +1551,14 @@
         "wires": []
     },
     {
-        "id": "fa35ef274d9e5f2b",
-        "type": "debug",
-        "z": "a850bca680aa7206",
-        "name": "debug 3",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1180,
-        "y": 800,
-        "wires": []
-    },
-    {
         "id": "b35cf6658cf55018",
         "type": "mqtt in",
         "z": "a850bca680aa7206",
         "name": "MQTT",
-        "topic": "data/01/#",
+        "topic": "data/02/#",
         "qos": "2",
         "datatype": "auto",
-        "broker": "",
+        "broker": "3dd935c7f9f57cbe",
         "nl": false,
         "rap": true,
         "rh": 0,
@@ -1525,7 +1576,7 @@
         "type": "function",
         "z": "a850bca680aa7206",
         "name": "Filter NonCCP",
-        "func": "// Ambil master sensor dari Flow Context\nconst sensors = flow.get(\"sensor_data_nonccp\");\n\nif (!Array.isArray(sensors)) {\n    node.warn(\"sensor_data belum tersedia\");\n    return null;\n}\n\n// Cari sensor berdasarkan kode sensor\nconst sensor = sensors.find(\n    item => item.kode_sensor === msg.sensor_code\n);\n\nif (!sensor) {\n    return null;\n}\n\n// Pastikan sensor memiliki CCP\nif (\n    sensor.ccp === null ||\n    sensor.ccp === undefined ||\n    sensor.ccp === \"\"\n) {\n    return null;\n}\n\n// Simpan informasi CCP ke msg\nmsg.ccp = sensor.ccp;\n\n// Simpan UUID CCP secara langsung agar mudah digunakan\nmsg.ccp_uuid = sensor.ccp.uuid;\n\nreturn msg;",
+        "func": "// Ambil master sensor dari Flow Context\nconst sensors = flow.get(\"sensor_data_nonccp\");\n\nif (!Array.isArray(sensors)) {\n    node.warn(\"sensor_data belum tersedia\");\n    return null;\n}\n\n// Cari sensor berdasarkan kode sensor\nconst sensor = sensors.find(\n    item => item.kode_sensor === msg.sensor_code\n);\n\nif (!sensor) {\n    return null;\n}\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -1559,7 +1610,7 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 1010,
+        "x": 1290,
         "y": 400,
         "wires": [
             [
@@ -1576,11 +1627,11 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
+        "complete": "true",
+        "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1500,
+        "x": 1780,
         "y": 400,
         "wires": []
     },
@@ -1596,7 +1647,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1240,
+        "x": 1520,
         "y": 400,
         "wires": [
             [
@@ -1605,7 +1656,7 @@
         ]
     },
     {
-        "id": "221ebd9650be2a46",
+        "id": "5087584c992433bf",
         "type": "http in",
         "z": "a850bca680aa7206",
         "name": "POST IN",
@@ -1614,59 +1665,53 @@
         "upload": false,
         "skipBodyParsing": false,
         "swaggerDoc": "",
-        "x": 380,
-        "y": 540,
+        "x": 500,
+        "y": 300,
         "wires": [
             [
-                "be44f97f2c18107c",
-                "5177b7368add916f"
+                "e18493f03ec9f27e"
             ]
         ]
     },
     {
-        "id": "cc4cbfc46376997d",
-        "type": "http response",
-        "z": "a850bca680aa7206",
-        "name": "RESPONSE",
-        "statusCode": "",
-        "headers": {},
-        "x": 570,
-        "y": 540,
-        "wires": []
-    },
-    {
-        "id": "be44f97f2c18107c",
-        "type": "debug",
-        "z": "a850bca680aa7206",
-        "name": "debug 6",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 580,
-        "y": 600,
-        "wires": []
-    },
-    {
-        "id": "5177b7368add916f",
+        "id": "e18493f03ec9f27e",
         "type": "function",
         "z": "a850bca680aa7206",
         "name": "function 1",
-        "func": "msg.statusCode = 200;\nmsg.payload = {\n    success: true,\n    message: \"Node-RED menerima request refresh\"\n};\nreturn msg;",
-        "outputs": 1,
+        "func": "const command = msg.payload?.command;\n\nif (command !== \"refresh_sensor\") {\n\n    const responseMsg = {\n        ...msg,\n        statusCode: 400,\n        payload: {\n            success: false,\n            message: \"Command tidak valid\"\n        }\n    };\n\n    return [null, responseMsg];\n}\n\n// =====================================================\n// TRIGGER REFRESH SENSOR\n// =====================================================\n\nconst refreshMsg = {\n    ...msg,\n    refresh_sensor: true\n};\n\n// =====================================================\n// RESPONSE KE DIRECTUS == pengembangan fitur blocking di directus\n// =====================================================\n\nconst responseMsg = {\n    ...msg,\n    statusCode: 200,\n    payload: {\n        success: true,\n        message: \"Node-RED menerima request refresh\"\n    }\n};\n\nreturn [refreshMsg, responseMsg];",
+        "outputs": 2,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 500,
-        "y": 660,
+        "x": 680,
+        "y": 300,
         "wires": [
             [
-                "cc4cbfc46376997d"
+                "2d2d433b8c5f14a2"
+            ],
+            [
+                "313d69412f701cb6"
+            ]
+        ]
+    },
+    {
+        "id": "039c44b76e120618",
+        "type": "inject",
+        "z": "a850bca680aa7206",
+        "name": "Inject Tiap Deploy",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 650,
+        "y": 240,
+        "wires": [
+            [
+                "2d2d433b8c5f14a2"
             ]
         ]
     },
@@ -2014,222 +2059,6 @@
         "wires": []
     },
     {
-        "id": "abb9824c35e440d9",
-        "type": "inject",
-        "z": "8d0798d68fe40ce6",
-        "name": "Inject once ",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 170,
-        "y": 120,
-        "wires": [
-            [
-                "0c44aa4299050169",
-                "6c60ced45da60780",
-                "73026a4505b2913f",
-                "32c9c777aeaff54a",
-                "7b807f52086492a4"
-            ]
-        ]
-    },
-    {
-        "id": "0c44aa4299050169",
-        "type": "function",
-        "z": "8d0798d68fe40ce6",
-        "name": "CREATE sensor_history",
-        "func": "msg.topic = `\nCREATE TABLE IF NOT EXISTS sensor_history (\n    id INT NOT NULL AUTO_INCREMENT,\n\n    plc_code CHAR(19),\n\n    sensor_code CHAR(6) NOT NULL,\n\n    value DECIMAL(6,2) NOT NULL,\n\n    data_cycle DECIMAL(8,0) DEFAULT NULL,\n\n    timestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,\n\n    PRIMARY KEY (id),\n\n    UNIQUE KEY uniq_sensor_time (\n        plc_code,\n        sensor_code,\n        timestamp\n    )\n\n) ENGINE=InnoDB\nDEFAULT CHARSET=utf8mb4\nCOLLATE=utf8mb4_0900_ai_ci;\n`;\n\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 470,
-        "y": 120,
-        "wires": [
-            [
-                "db2061c66bb8655a"
-            ]
-        ]
-    },
-    {
-        "id": "6c60ced45da60780",
-        "type": "function",
-        "z": "8d0798d68fe40ce6",
-        "name": "CREATE sensor_log",
-        "func": "msg.topic = `\nCREATE TABLE IF NOT EXISTS sensor_log (\n    id INT NOT NULL AUTO_INCREMENT,\n\n    plc_code VARCHAR(50) DEFAULT NULL,\n\n    sensor_code VARCHAR(50) DEFAULT NULL,\n\n    status VARCHAR(20) DEFAULT NULL,\n\n    event_time TIMESTAMP NULL DEFAULT NULL,\n\n    created_at TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,\n\n    PRIMARY KEY (id)\n\n) ENGINE=InnoDB\nDEFAULT CHARSET=utf8mb4\nCOLLATE=utf8mb4_0900_ai_ci;\n`;\n\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 460,
-        "y": 180,
-        "wires": [
-            [
-                "db2061c66bb8655a"
-            ]
-        ]
-    },
-    {
-        "id": "73026a4505b2913f",
-        "type": "function",
-        "z": "8d0798d68fe40ce6",
-        "name": "CREATE sensor_realtime",
-        "func": "msg.topic = `\nCREATE TABLE IF NOT EXISTS sensor_realtime (\n    id INT NOT NULL AUTO_INCREMENT,\n\n    plc_code CHAR(19) DEFAULT NULL,\n\n    sensor_code CHAR(6) NOT NULL,\n\n    value DECIMAL(8,2) NOT NULL,\n\n    data_cycle DECIMAL(8,0) DEFAULT NULL,\n\n    timestamp TIMESTAMP NOT NULL,\n\n    insert_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,\n\n    PRIMARY KEY (id)\n\n) ENGINE=InnoDB\nDEFAULT CHARSET=utf8mb4\nCOLLATE=utf8mb4_0900_ai_ci;\n`;\n\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 470,
-        "y": 240,
-        "wires": [
-            [
-                "db2061c66bb8655a"
-            ]
-        ]
-    },
-    {
-        "id": "ba30cf0db0f5a503",
-        "type": "debug",
-        "z": "8d0798d68fe40ce6",
-        "name": "debug 1",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1140,
-        "y": 120,
-        "wires": []
-    },
-    {
-        "id": "db2061c66bb8655a",
-        "type": "mysql",
-        "z": "8d0798d68fe40ce6",
-        "mydb": "dec916b40ded4a6c",
-        "name": "database",
-        "x": 840,
-        "y": 120,
-        "wires": [
-            [
-                "a6670d395ca8ea66"
-            ]
-        ]
-    },
-    {
-        "id": "32c9c777aeaff54a",
-        "type": "function",
-        "z": "8d0798d68fe40ce6",
-        "name": "CREATE sensor_machine",
-        "func": "msg.topic = `\nCREATE TABLE IF NOT EXISTS sensor_machine (\n    id INT NOT NULL AUTO_INCREMENT,\n\n    project_code VARCHAR(255) DEFAULT NULL,\n\n    sensor_code VARCHAR(255) DEFAULT NULL,\n\n    timestamp TIMESTAMP NOT NULL,\n\n    insert_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,\n\n    cycle VARCHAR(255) DEFAULT NULL,\n\n    value VARCHAR(255) DEFAULT NULL,\n\n    PRIMARY KEY (id)\n\n) ENGINE=InnoDB\nDEFAULT CHARSET=utf8mb4\nCOLLATE=utf8mb4_0900_ai_ci;\n`;\n\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 470,
-        "y": 300,
-        "wires": [
-            [
-                "db2061c66bb8655a"
-            ]
-        ]
-    },
-    {
-        "id": "7b807f52086492a4",
-        "type": "function",
-        "z": "8d0798d68fe40ce6",
-        "name": "CREATE sensor_cycle",
-        "func": "msg.topic = `\nCREATE TABLE IF NOT EXISTS sensor_cycle (\n    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,\n\n    project_code CHAR(36) NOT NULL\n        COMMENT 'UUID CCP',\n\n    sensor_code VARCHAR(50) NOT NULL,\n\n    production_date DATE NOT NULL,\n\n    cycle VARCHAR(50) NOT NULL,\n\n    start TIME DEFAULT NULL,\n\n    end TIME DEFAULT NULL,\n\n    status VARCHAR(20) NOT NULL,\n\n    data JSON DEFAULT NULL\n        COMMENT 'Data hasil olah CCP',\n\n    insert_at TIMESTAMP NOT NULL\n        DEFAULT CURRENT_TIMESTAMP,\n\n    update_at TIMESTAMP NOT NULL\n        DEFAULT CURRENT_TIMESTAMP\n        ON UPDATE CURRENT_TIMESTAMP,\n\n    PRIMARY KEY (id),\n\n    UNIQUE KEY uk_sensor_cycle (\n        project_code,\n        sensor_code,\n        production_date,\n        cycle\n    ),\n\n    KEY idx_project_sensor (\n        project_code,\n        sensor_code\n    ),\n\n    KEY idx_production_date (\n        production_date\n    ),\n\n    KEY idx_insert_at (\n        insert_at\n    ),\n\n    KEY idx_status (\n        status\n    )\n\n) ENGINE=InnoDB\nDEFAULT CHARSET=utf8mb4\nCOLLATE=utf8mb4_0900_ai_ci;\n`;\n\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 460,
-        "y": 360,
-        "wires": [
-            [
-                "db2061c66bb8655a"
-            ]
-        ]
-    },
-    {
-        "id": "a6670d395ca8ea66",
-        "type": "function",
-        "z": "8d0798d68fe40ce6",
-        "name": "Status",
-        "func": "if (msg.error) {\n    node.error(\"GAGAL membuat tabel\", msg.error);\n    return msg;\n}\n\nnode.warn(\"BERHASIL menjalankan query database\");\n\nmsg.payload = {\n    status: \"success\",\n    query: msg.topic,\n    result: msg.payload\n};\n\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 990,
-        "y": 120,
-        "wires": [
-            [
-                "ba30cf0db0f5a503"
-            ]
-        ]
-    },
-    {
-        "id": "ab03c9ab9f8a4135",
-        "type": "catch",
-        "z": "8d0798d68fe40ce6",
-        "name": "",
-        "scope": null,
-        "uncaught": false,
-        "x": 920,
-        "y": 240,
-        "wires": [
-            [
-                "c716142a69fafc94"
-            ]
-        ]
-    },
-    {
-        "id": "c716142a69fafc94",
-        "type": "debug",
-        "z": "8d0798d68fe40ce6",
-        "name": "debug 8",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1160,
-        "y": 240,
-        "wires": []
-    },
-    {
         "id": "e8152a765f93f699",
         "type": "inject",
         "z": "178528bcb30ba537",
@@ -2424,7 +2253,7 @@
         "id": "166a9895768d5355",
         "type": "mysql",
         "z": "178528bcb30ba537",
-        "mydb": "",
+        "mydb": "dec916b40ded4a6c",
         "name": "Database MySQL SGN",
         "x": 1070,
         "y": 260,
@@ -2486,5 +2315,242 @@
         "x": 780,
         "y": 220,
         "wires": []
+    },
+    {
+        "id": "abb9824c35e440d9",
+        "type": "inject",
+        "z": "8d0798d68fe40ce6",
+        "name": "Inject once ",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 170,
+        "y": 120,
+        "wires": [
+            [
+                "0c44aa4299050169",
+                "6c60ced45da60780",
+                "73026a4505b2913f",
+                "32c9c777aeaff54a",
+                "7b807f52086492a4",
+                "9a6c4764ea493137"
+            ]
+        ]
+    },
+    {
+        "id": "0c44aa4299050169",
+        "type": "function",
+        "z": "8d0798d68fe40ce6",
+        "name": "CREATE sensor_history",
+        "func": "msg.topic = `\nCREATE TABLE IF NOT EXISTS sensor_history (\n    id INT NOT NULL AUTO_INCREMENT,\n\n    plc_code CHAR(19),\n\n    sensor_code CHAR(6) NOT NULL,\n\n    value DECIMAL(6,2) NOT NULL,\n\n    data_cycle DECIMAL(8,0) DEFAULT NULL,\n\n    timestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,\n\n    PRIMARY KEY (id),\n\n    UNIQUE KEY uniq_sensor_time (\n        plc_code,\n        sensor_code,\n        timestamp\n    )\n\n) ENGINE=InnoDB\nDEFAULT CHARSET=utf8mb4\nCOLLATE=utf8mb4_0900_ai_ci;\n`;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 470,
+        "y": 120,
+        "wires": [
+            [
+                "db2061c66bb8655a"
+            ]
+        ]
+    },
+    {
+        "id": "6c60ced45da60780",
+        "type": "function",
+        "z": "8d0798d68fe40ce6",
+        "name": "CREATE sensor_log",
+        "func": "msg.topic = `\nCREATE TABLE IF NOT EXISTS sensor_log (\n    id INT NOT NULL AUTO_INCREMENT,\n\n    plc_code VARCHAR(50) DEFAULT NULL,\n\n    sensor_code VARCHAR(50) DEFAULT NULL,\n\n    status VARCHAR(20) DEFAULT NULL,\n\n    event_time TIMESTAMP NULL DEFAULT NULL,\n\n    created_at TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,\n\n    PRIMARY KEY (id)\n\n) ENGINE=InnoDB\nDEFAULT CHARSET=utf8mb4\nCOLLATE=utf8mb4_0900_ai_ci;\n`;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 460,
+        "y": 180,
+        "wires": [
+            [
+                "db2061c66bb8655a"
+            ]
+        ]
+    },
+    {
+        "id": "73026a4505b2913f",
+        "type": "function",
+        "z": "8d0798d68fe40ce6",
+        "name": "CREATE sensor_realtime",
+        "func": "msg.topic = `\nCREATE TABLE IF NOT EXISTS sensor_realtime (\n    id INT NOT NULL AUTO_INCREMENT,\n\n    plc_code CHAR(19) DEFAULT NULL,\n\n    sensor_code CHAR(6) NOT NULL,\n\n    value DECIMAL(8,2) NOT NULL,\n\n    data_cycle DECIMAL(8,0) DEFAULT NULL,\n\n    timestamp TIMESTAMP NOT NULL,\n\n    insert_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,\n\n    PRIMARY KEY (id)\n\n) ENGINE=InnoDB\nDEFAULT CHARSET=utf8mb4\nCOLLATE=utf8mb4_0900_ai_ci;\n`;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 470,
+        "y": 240,
+        "wires": [
+            [
+                "db2061c66bb8655a"
+            ]
+        ]
+    },
+    {
+        "id": "ba30cf0db0f5a503",
+        "type": "debug",
+        "z": "8d0798d68fe40ce6",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1140,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "db2061c66bb8655a",
+        "type": "mysql",
+        "z": "8d0798d68fe40ce6",
+        "mydb": "dec916b40ded4a6c",
+        "name": "database",
+        "x": 840,
+        "y": 120,
+        "wires": [
+            [
+                "a6670d395ca8ea66"
+            ]
+        ]
+    },
+    {
+        "id": "32c9c777aeaff54a",
+        "type": "function",
+        "z": "8d0798d68fe40ce6",
+        "name": "CREATE sensor_machine",
+        "func": "msg.topic = `\nCREATE TABLE IF NOT EXISTS sensor_machine (\n    id INT NOT NULL AUTO_INCREMENT,\n\n    project_code VARCHAR(255) DEFAULT NULL,\n\n    sensor_code VARCHAR(255) DEFAULT NULL,\n\n    timestamp TIMESTAMP NOT NULL,\n\n    insert_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,\n\n    cycle VARCHAR(255) DEFAULT NULL,\n\n    value VARCHAR(255) DEFAULT NULL,\n\n    PRIMARY KEY (id)\n\n) ENGINE=InnoDB\nDEFAULT CHARSET=utf8mb4\nCOLLATE=utf8mb4_0900_ai_ci;\n`;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 470,
+        "y": 300,
+        "wires": [
+            [
+                "db2061c66bb8655a"
+            ]
+        ]
+    },
+    {
+        "id": "7b807f52086492a4",
+        "type": "function",
+        "z": "8d0798d68fe40ce6",
+        "name": "CREATE sensor_cycle",
+        "func": "msg.topic = `\nCREATE TABLE IF NOT EXISTS sensor_cycle (\n    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,\n\n    project_code CHAR(36) NOT NULL\n        COMMENT 'UUID CCP',\n\n    sensor_code VARCHAR(50) NOT NULL,\n\n    production_date DATE NOT NULL,\n\n    cycle VARCHAR(50) NOT NULL,\n\n    start TIME DEFAULT NULL,\n\n    end TIME DEFAULT NULL,\n\n    status VARCHAR(20) NOT NULL,\n\n    data JSON DEFAULT NULL\n        COMMENT 'Data hasil olah CCP',\n\n    insert_at TIMESTAMP NOT NULL\n        DEFAULT CURRENT_TIMESTAMP,\n\n    update_at TIMESTAMP NOT NULL\n        DEFAULT CURRENT_TIMESTAMP\n        ON UPDATE CURRENT_TIMESTAMP,\n\n    PRIMARY KEY (id),\n\n    UNIQUE KEY uk_sensor_cycle (\n        project_code,\n        sensor_code,\n        production_date,\n        cycle\n    ),\n\n    KEY idx_project_sensor (\n        project_code,\n        sensor_code\n    ),\n\n    KEY idx_production_date (\n        production_date\n    ),\n\n    KEY idx_insert_at (\n        insert_at\n    ),\n\n    KEY idx_status (\n        status\n    )\n\n) ENGINE=InnoDB\nDEFAULT CHARSET=utf8mb4\nCOLLATE=utf8mb4_0900_ai_ci;\n`;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 460,
+        "y": 360,
+        "wires": [
+            [
+                "db2061c66bb8655a"
+            ]
+        ]
+    },
+    {
+        "id": "a6670d395ca8ea66",
+        "type": "function",
+        "z": "8d0798d68fe40ce6",
+        "name": "Status",
+        "func": "if (msg.error) {\n    node.error(\"GAGAL membuat tabel\", msg.error);\n    return msg;\n}\n\nnode.warn(\"BERHASIL menjalankan query database\");\n\nmsg.payload = {\n    status: \"success\",\n    query: msg.topic,\n    result: msg.payload\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 990,
+        "y": 120,
+        "wires": [
+            [
+                "ba30cf0db0f5a503"
+            ]
+        ]
+    },
+    {
+        "id": "ab03c9ab9f8a4135",
+        "type": "catch",
+        "z": "8d0798d68fe40ce6",
+        "name": "",
+        "scope": null,
+        "uncaught": false,
+        "x": 920,
+        "y": 240,
+        "wires": [
+            [
+                "c716142a69fafc94"
+            ]
+        ]
+    },
+    {
+        "id": "c716142a69fafc94",
+        "type": "debug",
+        "z": "8d0798d68fe40ce6",
+        "name": "debug 8",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1160,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "9a6c4764ea493137",
+        "type": "function",
+        "z": "8d0798d68fe40ce6",
+        "name": "Create index sensor_history",
+        "func": "msg.topic = \"ALTER TABLE sensor_history ADD INDEX idx_ts_sensor_val (timestamp, sensor_code, value);\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 420,
+        "wires": [
+            [
+                "db2061c66bb8655a"
+            ]
+        ]
     }
 ]
