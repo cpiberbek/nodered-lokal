@@ -118,122 +118,6 @@
         "sessionExpiry": ""
     },
     {
-        "id": "c88019aa129031bb",
-        "type": "ui_tab",
-        "name": "Stunner HMI",
-        "icon": "dashboard",
-        "order": 1,
-        "disabled": false,
-        "hidden": false
-    },
-    {
-        "id": "5a21ef45a2901a12",
-        "type": "ui_group",
-        "name": "Control Stunner",
-        "tab": "c88019aa129031bb",
-        "order": 1,
-        "disp": true,
-        "width": "6",
-        "collapse": false,
-        "className": ""
-    },
-    {
-        "id": "9385f55dc2e912bc",
-        "type": "ui_base",
-        "theme": {
-            "name": "theme-light",
-            "lightTheme": {
-                "default": "#0094CE",
-                "baseColor": "#0094CE",
-                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
-                "edited": false
-            },
-            "darkTheme": {
-                "default": "#097479",
-                "baseColor": "#097479",
-                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
-                "edited": false
-            },
-            "customTheme": {
-                "name": "Untitled Theme 1",
-                "default": "#4B7930",
-                "baseColor": "#4B7930",
-                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
-            },
-            "themeState": {
-                "base-color": {
-                    "default": "#0094CE",
-                    "value": "#0094CE",
-                    "edited": false
-                },
-                "page-titlebar-backgroundColor": {
-                    "value": "#0094CE",
-                    "edited": false
-                },
-                "page-backgroundColor": {
-                    "value": "#fafafa",
-                    "edited": false
-                },
-                "page-sidebar-backgroundColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "group-textColor": {
-                    "value": "#1bbfff",
-                    "edited": false
-                },
-                "group-borderColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "group-backgroundColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "widget-textColor": {
-                    "value": "#111111",
-                    "edited": false
-                },
-                "widget-backgroundColor": {
-                    "value": "#0094ce",
-                    "edited": false
-                },
-                "widget-borderColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "base-font": {
-                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
-                }
-            },
-            "angularTheme": {
-                "primary": "indigo",
-                "accents": "blue",
-                "warn": "red",
-                "background": "grey",
-                "palette": "light"
-            }
-        },
-        "site": {
-            "name": "Node-RED Dashboard",
-            "hideToolbar": "false",
-            "allowSwipe": "false",
-            "lockMenu": "false",
-            "allowTempTheme": "true",
-            "dateFormat": "DD/MM/YYYY",
-            "sizes": {
-                "sx": 48,
-                "sy": 48,
-                "gx": 6,
-                "gy": 6,
-                "cx": 6,
-                "cy": 6,
-                "px": 0,
-                "py": 0
-            }
-        }
-    },
-    {
         "id": "f775e65ba0493565",
         "type": "json",
         "z": "a850bca680aa7206",
@@ -2216,13 +2100,10 @@
             [
                 "e6e7075e2705cc24"
             ],
-            [
-                "6a6f6a55563285e1"
-            ],
+            [],
             [
                 "aa3538155449de1f",
-                "166a9895768d5355",
-                "4a0c4c8592a70de9"
+                "166a9895768d5355"
             ]
         ]
     },
@@ -2276,44 +2157,6 @@
         "statusType": "auto",
         "x": 780,
         "y": 360,
-        "wires": []
-    },
-    {
-        "id": "4a0c4c8592a70de9",
-        "type": "ui_toast",
-        "z": "178528bcb30ba537",
-        "position": "top right",
-        "displayTime": "4",
-        "highlight": "",
-        "outputs": 0,
-        "ok": "OK",
-        "cancel": "",
-        "raw": false,
-        "className": "",
-        "name": "Notifikasi HMI",
-        "x": 760,
-        "y": 300,
-        "wires": []
-    },
-    {
-        "id": "6a6f6a55563285e1",
-        "type": "ui_text",
-        "z": "178528bcb30ba537",
-        "group": "5a21ef45a2901a12",
-        "order": 1,
-        "width": 6,
-        "height": 4,
-        "name": "Display Active Batch",
-        "label": "STATUS BATCH AKTIF",
-        "format": "<b>Truk:</b> {{msg.payload.truck_id}}<br><b>Ukuran:</b> {{msg.payload.size}}<br><b>Rentang Bobot:</b> {{msg.payload.avg_weight}} kg<br><b>Std V:</b> {{msg.payload.std.v_min}}-{{msg.payload.std.v_max}}V | <b>Std I:</b> {{msg.payload.std.i_min}}-{{msg.payload.std.i_max}}A",
-        "layout": "col-center",
-        "className": "",
-        "style": false,
-        "font": "",
-        "fontSize": 16,
-        "color": "#000000",
-        "x": 780,
-        "y": 220,
         "wires": []
     },
     {
