@@ -2289,7 +2289,7 @@
         "type": "function",
         "z": "8d0798d68fe40ce6",
         "name": "CREATE sensor_machine",
-        "func": "msg.topic = `\nCREATE TABLE IF NOT EXISTS sensor_machine (\n    id INT NOT NULL AUTO_INCREMENT,\n\n    project_code VARCHAR(255) DEFAULT NULL,\n\n    sensor_code VARCHAR(255) DEFAULT NULL,\n\n    timestamp TIMESTAMP NOT NULL,\n\n    insert_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,\n\n    cycle VARCHAR(255) DEFAULT NULL,\n\n    value VARCHAR(255) DEFAULT NULL,\n\n    PRIMARY KEY (id)\n\n) ENGINE=InnoDB\nDEFAULT CHARSET=utf8mb4\nCOLLATE=utf8mb4_0900_ai_ci;\n`;\n\nreturn msg;",
+        "func": "msg.topic = `\nCREATE TABLE IF NOT EXISTS sensor_machine (\n    id INT NOT NULL AUTO_INCREMENT,\n\n    project_code VARCHAR(255) DEFAULT NULL,\n\n    sensor_code VARCHAR(255) DEFAULT NULL,\n\n    timestamp TIMESTAMP NOT NULL,\n\n    insert_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,\n\n    cycle VARCHAR(255) DEFAULT NULL,\n\n    value VARCHAR(255) DEFAULT NULL,\n\n    PRIMARY KEY (id)\n\n) ENGINE=InnoDB\nDEFAULT CHARSET=utf8mb4\nCOLLATE=utf8mb4_0900_ai_ci;\n\nALTER TABLE sensor_machine\nMODIFY COLUMN value DECIMAL(8,2) DEFAULT NULL;\n`;\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
