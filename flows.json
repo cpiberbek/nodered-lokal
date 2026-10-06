@@ -3,7 +3,7 @@
         "id": "a850bca680aa7206",
         "type": "tab",
         "label": "Flow IoT",
-        "disabled": true,
+        "disabled": false,
         "info": "",
         "env": []
     },
@@ -11,7 +11,7 @@
         "id": "8d0798d68fe40ce6",
         "type": "tab",
         "label": "DB_Initialisation",
-        "disabled": true,
+        "disabled": false,
         "info": "",
         "env": []
     },
@@ -19,7 +19,7 @@
         "id": "6e80b4feb5e1d092",
         "type": "tab",
         "label": "M-Elec Baking",
-        "disabled": true,
+        "disabled": false,
         "info": "",
         "env": []
     },
@@ -27,7 +27,7 @@
         "id": "7c8827d758da3caf",
         "type": "tab",
         "label": "M-Chamber Retort",
-        "disabled": true,
+        "disabled": false,
         "info": "",
         "env": []
     },
@@ -35,7 +35,7 @@
         "id": "9a8751a8fb15e982",
         "type": "tab",
         "label": "M-Chamber RTG",
-        "disabled": true,
+        "disabled": false,
         "info": "",
         "env": []
     },
@@ -43,7 +43,7 @@
         "id": "178528bcb30ba537",
         "type": "tab",
         "label": "M-Stunner",
-        "disabled": true,
+        "disabled": false,
         "info": "",
         "env": []
     },
