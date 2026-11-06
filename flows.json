@@ -134,7 +134,7 @@
         "action": "",
         "pretty": true,
         "x": 530,
-        "y": 460,
+        "y": 520,
         "wires": [
             [
                 "4599b399b3698075"
@@ -154,7 +154,7 @@
         "finalize": "",
         "libs": [],
         "x": 1240,
-        "y": 640,
+        "y": 700,
         "wires": [
             [
                 "48639c479673093b"
@@ -174,7 +174,7 @@
         "finalize": "",
         "libs": [],
         "x": 850,
-        "y": 960,
+        "y": 1020,
         "wires": [
             [
                 "3bf4c5e48c86cc61"
@@ -199,7 +199,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 520,
-        "y": 900,
+        "y": 960,
         "wires": [
             [
                 "1b5206eea885dcbd",
@@ -215,7 +215,7 @@
         "name": "MQTT → Realtime DB",
         "info": " - Mendengarkan data sensor dari MQTT broker.\n - Parse payload dan insert ke tabel sensor_realtime.\n - Tujuan: menyimpan data mentah (realtime, high-resolution).",
         "x": 200,
-        "y": 460,
+        "y": 520,
         "wires": []
     },
     {
@@ -225,7 +225,7 @@
         "name": "Interval → Tabel History",
         "info": " - Inject node jalan setiap interval.\n - Eksekusi query agregasi (AVG per sensor) ke sensor_history.\n - Tujuan: menyimpan data jangka panjang dalam resolusi lebih rendah.",
         "x": 200,
-        "y": 620,
+        "y": 680,
         "wires": []
     },
     {
@@ -235,7 +235,7 @@
         "name": "Daily Cleanup Data > 14 Hari",
         "info": " - Inject node jalan setiap hari pukul 00:10.\n - Jalankan query DELETE untuk menghapus data realtime lebih dari 14 hari.\n - Tujuan: mencegah tabel sensor_realtime membengkak.",
         "x": 220,
-        "y": 900,
+        "y": 960,
         "wires": []
     },
     {
@@ -245,7 +245,7 @@
         "name": "Alert",
         "info": "",
         "x": 150,
-        "y": 1100,
+        "y": 1160,
         "wires": []
     },
     {
@@ -261,7 +261,7 @@
         "finalize": "",
         "libs": [],
         "x": 1240,
-        "y": 580,
+        "y": 640,
         "wires": [
             [
                 "48639c479673093b"
@@ -281,7 +281,7 @@
         "finalize": "",
         "libs": [],
         "x": 830,
-        "y": 1100,
+        "y": 1160,
         "wires": [
             [
                 "3bf4c5e48c86cc61"
@@ -308,7 +308,7 @@
         "topic": "",
         "payloadType": "date",
         "x": 530,
-        "y": 1100,
+        "y": 1160,
         "wires": [
             [
                 "197658740bcf179c"
@@ -328,7 +328,7 @@
         "finalize": "",
         "libs": [],
         "x": 840,
-        "y": 1020,
+        "y": 1080,
         "wires": [
             [
                 "3bf4c5e48c86cc61"
@@ -342,7 +342,7 @@
         "name": "REST API → Latest Sensor Data",
         "info": " - Endpoint HTTP /api/sensor_realtime/latest.\n - Ambil nilai terbaru dari setiap sensor.\n - Format output JSON agar bisa dipakai website paperless / frontend lain.",
         "x": 230,
-        "y": 1180,
+        "y": 1240,
         "wires": []
     },
     {
@@ -352,7 +352,7 @@
         "name": "(-) Trigger button simpan dr paperless untuk insert ke tabel history",
         "info": "",
         "x": 330,
-        "y": 1360,
+        "y": 1420,
         "wires": []
     },
     {
@@ -363,7 +363,7 @@
         "server": "fae6fc6b5acf089c",
         "client": "",
         "x": 1170,
-        "y": 1280,
+        "y": 1340,
         "wires": []
     },
     {
@@ -379,7 +379,7 @@
         "finalize": "",
         "libs": [],
         "x": 900,
-        "y": 1280,
+        "y": 1340,
         "wires": [
             [
                 "ccad7752d95aa5d9"
@@ -395,7 +395,7 @@
         "action": "",
         "pretty": true,
         "x": 690,
-        "y": 1280,
+        "y": 1340,
         "wires": [
             [
                 "d2f15c42ebee4a71"
@@ -413,7 +413,7 @@
         "skipBodyParsing": false,
         "swaggerDoc": "",
         "x": 730,
-        "y": 1360,
+        "y": 1420,
         "wires": [
             [
                 "c02b0ea0c4583efd"
@@ -429,7 +429,7 @@
         "action": "",
         "pretty": true,
         "x": 970,
-        "y": 1360,
+        "y": 1420,
         "wires": [
             [
                 "b291ee43fbaafd45"
@@ -449,7 +449,7 @@
         "finalize": "",
         "libs": [],
         "x": 1250,
-        "y": 1360,
+        "y": 1420,
         "wires": [
             [
                 "605ea1f6543efe0a"
@@ -469,7 +469,7 @@
         "finalize": "",
         "libs": [],
         "x": 1720,
-        "y": 1360,
+        "y": 1420,
         "wires": [
             []
         ]
@@ -481,7 +481,7 @@
         "name": "Websocket → Latest Sensor Data",
         "info": "",
         "x": 240,
-        "y": 1280,
+        "y": 1340,
         "wires": []
     },
     {
@@ -492,7 +492,7 @@
         "statusCode": "",
         "headers": {},
         "x": 1420,
-        "y": 1180,
+        "y": 1240,
         "wires": []
     },
     {
@@ -508,7 +508,7 @@
         "finalize": "",
         "libs": [],
         "x": 1150,
-        "y": 1180,
+        "y": 1240,
         "wires": [
             [
                 "824f1f8b95116cd3"
@@ -526,7 +526,7 @@
         "skipBodyParsing": false,
         "swaggerDoc": "",
         "x": 510,
-        "y": 1180,
+        "y": 1240,
         "wires": [
             [
                 "88fbb53b1ce021e7"
@@ -546,7 +546,7 @@
         "finalize": "",
         "libs": [],
         "x": 730,
-        "y": 1180,
+        "y": 1240,
         "wires": [
             [
                 "a1042de7bf32f7c3"
@@ -557,7 +557,7 @@
         "id": "76efd0daf1d7c3df",
         "type": "comment",
         "z": "a850bca680aa7206",
-        "name": "Versi 1.19",
+        "name": "Versi 1.20",
         "info": "liat detail versi ada di iot hub (directus)\nhttp://10.68.1.220:8055/",
         "x": 160,
         "y": 180,
@@ -576,7 +576,7 @@
         "finalize": "",
         "libs": [],
         "x": 1190,
-        "y": 460,
+        "y": 520,
         "wires": [
             [
                 "6afceffe057ff705"
@@ -596,7 +596,7 @@
         "finalize": "",
         "libs": [],
         "x": 690,
-        "y": 460,
+        "y": 520,
         "wires": [
             [
                 "1c13bf4db39a3431",
@@ -617,7 +617,7 @@
         "finalize": "",
         "libs": [],
         "x": 1190,
-        "y": 520,
+        "y": 580,
         "wires": [
             [
                 "71a6110c68366f79"
@@ -637,7 +637,7 @@
         "finalize": "",
         "libs": [],
         "x": 1380,
-        "y": 520,
+        "y": 580,
         "wires": [
             [
                 "48639c479673093b"
@@ -661,7 +661,7 @@
         "name": "Get Data AVG Local from API",
         "info": "",
         "x": 220,
-        "y": 1440,
+        "y": 1500,
         "wires": []
     },
     {
@@ -675,7 +675,7 @@
         "skipBodyParsing": false,
         "swaggerDoc": "",
         "x": 480,
-        "y": 1440,
+        "y": 1500,
         "wires": [
             [
                 "778f2b06990e6eea",
@@ -696,7 +696,7 @@
         "finalize": "",
         "libs": [],
         "x": 960,
-        "y": 1440,
+        "y": 1500,
         "wires": [
             [
                 "c9d53889c86aa09b",
@@ -717,7 +717,7 @@
         "finalize": "",
         "libs": [],
         "x": 720,
-        "y": 1440,
+        "y": 1500,
         "wires": [
             [
                 "102698730497cfb2"
@@ -738,7 +738,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 680,
-        "y": 1500,
+        "y": 1560,
         "wires": []
     },
     {
@@ -749,7 +749,7 @@
         "statusCode": "",
         "headers": {},
         "x": 1410,
-        "y": 1440,
+        "y": 1500,
         "wires": []
     },
     {
@@ -766,7 +766,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1380,
-        "y": 1500,
+        "y": 1560,
         "wires": []
     },
     {
@@ -783,7 +783,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1170,
-        "y": 1500,
+        "y": 1560,
         "wires": []
     },
     {
@@ -802,7 +802,7 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 1650,
+        "x": 1670,
         "y": 260,
         "wires": [
             [
@@ -826,7 +826,7 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 2200,
+        "x": 2220,
         "y": 260,
         "wires": [
             [
@@ -846,7 +846,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1240,
+        "x": 1260,
         "y": 260,
         "wires": [
             [
@@ -866,7 +866,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1920,
+        "x": 1940,
         "y": 260,
         "wires": [
             [
@@ -881,7 +881,7 @@
         "name": "Versioning",
         "info": "list versioning cek di IoT Hub (Directus)",
         "x": 160,
-        "y": 260,
+        "y": 240,
         "wires": []
     },
     {
@@ -896,7 +896,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 960,
+        "x": 980,
         "y": 260,
         "wires": [
             [
@@ -916,7 +916,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1470,
+        "x": 1490,
         "y": 260,
         "wires": [
             [
@@ -931,11 +931,9 @@
         "mydb": "dec916b40ded4a6c",
         "name": "database",
         "x": 1780,
-        "y": 520,
+        "y": 580,
         "wires": [
-            [
-                "2c14a387a120601e"
-            ]
+            []
         ]
     },
     {
@@ -945,7 +943,7 @@
         "mydb": "dec916b40ded4a6c",
         "name": "database",
         "x": 940,
-        "y": 1180,
+        "y": 1240,
         "wires": [
             [
                 "b9b718c0bb38497d"
@@ -959,7 +957,7 @@
         "mydb": "dec916b40ded4a6c",
         "name": "database",
         "x": 1520,
-        "y": 1360,
+        "y": 1420,
         "wires": [
             [
                 "93ea4af6d0509d68"
@@ -973,7 +971,7 @@
         "mydb": "dec916b40ded4a6c",
         "name": "database",
         "x": 1180,
-        "y": 1440,
+        "y": 1500,
         "wires": [
             [
                 "94997fcb3ce6b801",
@@ -988,7 +986,7 @@
         "name": "Get Data CCP Local from API",
         "info": "",
         "x": 220,
-        "y": 1580,
+        "y": 1640,
         "wires": []
     },
     {
@@ -1003,7 +1001,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1110,
+        "x": 1130,
         "y": 340,
         "wires": [
             [
@@ -1030,7 +1028,7 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 1290,
+        "x": 1310,
         "y": 340,
         "wires": [
             [
@@ -1051,7 +1049,7 @@
         "finalize": "",
         "libs": [],
         "x": 1250,
-        "y": 700,
+        "y": 760,
         "wires": [
             [
                 "48639c479673093b"
@@ -1065,7 +1063,7 @@
         "name": "Filter CCP",
         "info": "",
         "x": 160,
-        "y": 700,
+        "y": 760,
         "wires": []
     },
     {
@@ -1081,7 +1079,7 @@
         "finalize": "",
         "libs": [],
         "x": 1210,
-        "y": 760,
+        "y": 820,
         "wires": [
             [
                 "79c8fe9eec7b4c16"
@@ -1103,7 +1101,7 @@
         "expiry": "",
         "broker": "95030b5bf43fa98e",
         "x": 1390,
-        "y": 760,
+        "y": 820,
         "wires": []
     },
     {
@@ -1121,7 +1119,7 @@
         "expiry": "",
         "broker": "95030b5bf43fa98e",
         "x": 1390,
-        "y": 460,
+        "y": 520,
         "wires": []
     },
     {
@@ -1137,7 +1135,7 @@
         "finalize": "",
         "libs": [],
         "x": 850,
-        "y": 900,
+        "y": 960,
         "wires": [
             [
                 "3bf4c5e48c86cc61"
@@ -1148,15 +1146,15 @@
         "id": "8f3b2fee1e13433a",
         "type": "inject",
         "z": "a850bca680aa7206",
-        "name": "Inject Manual untuk Delete Sensor",
+        "name": "Inject Manual",
         "props": [],
         "repeat": "",
         "crontab": "",
         "once": true,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 480,
-        "y": 360,
+        "x": 420,
+        "y": 240,
         "wires": [
             [
                 "e18493f03ec9f27e"
@@ -1175,7 +1173,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 900,
+        "x": 920,
         "y": 340,
         "wires": [
             [
@@ -1196,7 +1194,7 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1740,
+        "x": 1760,
         "y": 340,
         "wires": []
     },
@@ -1207,7 +1205,7 @@
         "name": "GET Sensors IoT Hub",
         "info": "",
         "x": 200,
-        "y": 340,
+        "y": 300,
         "wires": []
     },
     {
@@ -1222,7 +1220,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1510,
+        "x": 1530,
         "y": 340,
         "wires": [
             [
@@ -1243,7 +1241,7 @@
         "finalize": "",
         "libs": [],
         "x": 870,
-        "y": 760,
+        "y": 820,
         "wires": [
             [
                 "dd982eac8b9e9451",
@@ -1259,7 +1257,7 @@
         "mydb": "dec916b40ded4a6c",
         "name": "database",
         "x": 1200,
-        "y": 900,
+        "y": 960,
         "wires": [
             []
         ]
@@ -1277,7 +1275,7 @@
             "6f15bca796a06cf6"
         ],
         "x": 1145,
-        "y": 820,
+        "y": 880,
         "wires": []
     },
     {
@@ -1290,7 +1288,7 @@
         "upload": false,
         "swaggerDoc": "",
         "x": 450,
-        "y": 1580,
+        "y": 1640,
         "wires": [
             [
                 "62b4fcd844d80a7d"
@@ -1310,7 +1308,7 @@
         "finalize": "",
         "libs": [],
         "x": 670,
-        "y": 1580,
+        "y": 1640,
         "wires": [
             [
                 "907a0766d389d522"
@@ -1333,7 +1331,7 @@
         "finalize": "",
         "libs": [],
         "x": 920,
-        "y": 1580,
+        "y": 1640,
         "wires": [
             [
                 "0bdb863ea676896e"
@@ -1350,7 +1348,7 @@
         "mydb": "dec916b40ded4a6c",
         "name": "database",
         "x": 1120,
-        "y": 1580,
+        "y": 1640,
         "wires": [
             [
                 "493a64388a27c056"
@@ -1370,7 +1368,7 @@
         "finalize": "",
         "libs": [],
         "x": 1390,
-        "y": 1580,
+        "y": 1640,
         "wires": [
             [
                 "14458cd93ecec125"
@@ -1385,7 +1383,7 @@
         "statusCode": "",
         "headers": {},
         "x": 1630,
-        "y": 1640,
+        "y": 1700,
         "wires": []
     },
     {
@@ -1398,7 +1396,7 @@
         ],
         "uncaught": false,
         "x": 1170,
-        "y": 1700,
+        "y": 1760,
         "wires": [
             [
                 "c9e33ff684265ba6"
@@ -1418,7 +1416,7 @@
         "finalize": "",
         "libs": [],
         "x": 1420,
-        "y": 1700,
+        "y": 1760,
         "wires": [
             [
                 "14458cd93ecec125"
@@ -1433,7 +1431,7 @@
         "statusCode": "",
         "headers": {},
         "x": 910,
-        "y": 1640,
+        "y": 1700,
         "wires": []
     },
     {
@@ -1444,7 +1442,7 @@
         "statusCode": "",
         "headers": {},
         "x": 1150,
-        "y": 1640,
+        "y": 1700,
         "wires": []
     },
     {
@@ -1461,7 +1459,7 @@
         "rh": 0,
         "inputs": 0,
         "x": 370,
-        "y": 460,
+        "y": 520,
         "wires": [
             [
                 "f775e65ba0493565"
@@ -1481,7 +1479,7 @@
         "finalize": "",
         "libs": [],
         "x": 860,
-        "y": 460,
+        "y": 520,
         "wires": [
             [
                 "489079518de56347",
@@ -1507,7 +1505,7 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 1290,
+        "x": 1310,
         "y": 400,
         "wires": [
             [
@@ -1528,7 +1526,7 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1780,
+        "x": 1800,
         "y": 400,
         "wires": []
     },
@@ -1544,7 +1542,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1520,
+        "x": 1540,
         "y": 400,
         "wires": [
             [
@@ -1562,11 +1560,12 @@
         "upload": false,
         "skipBodyParsing": false,
         "swaggerDoc": "",
-        "x": 500,
+        "x": 380,
         "y": 300,
         "wires": [
             [
-                "e18493f03ec9f27e"
+                "e18493f03ec9f27e",
+                "f70d14ed781d8b62"
             ]
         ]
     },
@@ -1574,7 +1573,7 @@
         "id": "e18493f03ec9f27e",
         "type": "function",
         "z": "a850bca680aa7206",
-        "name": "function 1",
+        "name": "Refresh Sensor (Flow IoT Hub)",
         "func": "const command = msg.payload?.command;\n\nif (command !== \"refresh_sensor\") {\n\n    const responseMsg = {\n        ...msg,\n        statusCode: 400,\n        payload: {\n            success: false,\n            message: \"Command tidak valid\"\n        }\n    };\n\n    return [null, responseMsg];\n}\n\n// =====================================================\n// TRIGGER REFRESH SENSOR\n// =====================================================\n\nconst refreshMsg = {\n    ...msg,\n    refresh_sensor: true\n};\n\n// =====================================================\n// RESPONSE KE DIRECTUS == pengembangan fitur blocking di directus\n// =====================================================\n\nconst responseMsg = {\n    ...msg,\n    statusCode: 200,\n    payload: {\n        success: true,\n        message: \"Node-RED menerima request refresh\"\n    }\n};\n\nreturn [refreshMsg, responseMsg];",
         "outputs": 2,
         "timeout": 0,
@@ -1582,7 +1581,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 680,
+        "x": 650,
         "y": 300,
         "wires": [
             [
@@ -1604,7 +1603,7 @@
         "once": true,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 650,
+        "x": 670,
         "y": 240,
         "wires": [
             [
@@ -1625,25 +1624,49 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 2380,
+        "x": 2400,
         "y": 260,
         "wires": []
     },
     {
-        "id": "2c14a387a120601e",
-        "type": "debug",
+        "id": "95ef83c95726fd5d",
+        "type": "http response",
         "z": "a850bca680aa7206",
-        "name": "debug 6",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 2000,
-        "y": 620,
+        "name": "Response for IoT Hub",
+        "statusCode": "",
+        "headers": {},
+        "x": 740,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "f70d14ed781d8b62",
+        "type": "function",
+        "z": "a850bca680aa7206",
+        "name": "Status Code",
+        "func": "msg.statusCode = 204;\nmsg.payload = null;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 530,
+        "y": 460,
+        "wires": [
+            [
+                "95ef83c95726fd5d"
+            ]
+        ]
+    },
+    {
+        "id": "1904b5c8c1c21e6f",
+        "type": "comment",
+        "z": "a850bca680aa7206",
+        "name": "Response nodered to IoT Hub",
+        "info": "",
+        "x": 220,
+        "y": 460,
         "wires": []
     },
     {
